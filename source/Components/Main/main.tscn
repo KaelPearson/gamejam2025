@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvau8b2nxun3b"]
+[gd_scene load_steps=9 format=3 uid="uid://cvau8b2nxun3b"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
+[ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
@@ -15,6 +16,21 @@ shadow_offset = Vector2(5, 5)
 font_size = 50
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_pnopi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressAny:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_bx5bx"]
 resource_name = "press_start"
@@ -33,39 +49,19 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.203922), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_pnopi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/PressAny:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6wt8"]
 _data = {
 &"RESET": SubResource("Animation_pnopi"),
 &"press_start": SubResource("Animation_bx5bx")
 }
 
-[node name="Main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Main" type="Node" node_paths=PackedStringArray("menu_ui")]
+script = ExtResource("1_j6wt8")
+menu_ui = NodePath("MarginContainer")
 
 [node name="ParallaxBg" parent="." instance=ExtResource("1_pnopi")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
