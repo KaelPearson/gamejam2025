@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cjatrqs22h614"]
+[gd_scene load_steps=2 format=3 uid="uid://cjatrqs22h614"]
+
+[ext_resource type="Script" uid="uid://besjootl5e0gj" path="res://Components/HitboxComponent/hitbox_component.gd" id="1_egd74"]
 
 [node name="Enemy" type="Node2D"]
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("1_egd74")
+metadata/_custom_type_script = "uid://besjootl5e0gj"

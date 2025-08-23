@@ -9,7 +9,10 @@ class_name HitboxComponent;
 ## Amt of damage this should do. Default to 1 heart
 @export var attack_damage : int = 1;
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	self.area_entered.connect(_on_area_entered)
+
+func _on_area_entered(area: Area2D) -> void:
 	var bodies = get_overlapping_areas();
 	for body in bodies :
 		if (body is HurtboxComponent) :
