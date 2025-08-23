@@ -20,3 +20,8 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/main_scene="uid://ckda7qy1a5d2c"
+
+[layer_names]
+
+2d_physics/layer_3="in_air"

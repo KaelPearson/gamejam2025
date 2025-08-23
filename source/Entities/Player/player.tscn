@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
 [ext_resource type="Texture2D" uid="uid://dmgo7xo0xv4w1" path="res://Assets/board/Board.png" id="4_7a1se"]
 [ext_resource type="PackedScene" uid="uid://cwp2uk6uql5kt" path="res://Components/HitboxComponent/hitbox_component.tscn" id="5_7a1se"]
-[ext_resource type="Texture2D" uid="uid://b31awv46ke48d" path="res://Assets/dog/Dog_Body_1.png" id="5_lub02"]
+[ext_resource type="Texture2D" uid="uid://bas70ngo20iep" path="res://Assets/dog/Dog_Body_3.png" id="5_lub02"]
 [ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="6_x1y6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
@@ -28,11 +28,11 @@ position = Vector2(-28, -10.5)
 texture = ExtResource("4_7a1se")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(-21, -67.5)
+position = Vector2(-42, -39)
 texture = ExtResource("5_lub02")
 
 [node name="Head" type="Sprite2D" parent="."]
-position = Vector2(0, -153.5)
+position = Vector2(30, -113)
 texture = ExtResource("6_x1y6q")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("hurtbox", "health_component") instance=ExtResource("4_01a4e")]
@@ -46,9 +46,16 @@ shape = SubResource("RectangleShape2D_ap3xn")
 
 [node name="hitbox_component" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("5_7a1se")]
 visible = false
+collision_mask = 5
 hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
 position = Vector2(-19, 61.75)
 shape = SubResource("RectangleShape2D_iplt1")
 debug_color = Color(0.658789, 0.51407, 0.0890975, 0.42)
+
+[node name="debug" type="Label" parent="."]
+offset_left = -63.0
+offset_top = -240.0
+offset_right = 64.0
+offset_bottom = -201.0

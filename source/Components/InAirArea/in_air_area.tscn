@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn2bi42x0sclh"]
+
+[ext_resource type="Script" uid="uid://2rqarqypfws0" path="res://Components/InAirArea/in_air_area.gd" id="1_gch1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6wt8"]
+size = Vector2(1928, 931)
+
+[node name="InAirArea" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_gch1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(954, 467.5)
+shape = SubResource("RectangleShape2D_j6wt8")
