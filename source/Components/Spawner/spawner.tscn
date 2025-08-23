@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0dw7qca8ae2m"]
+
+[ext_resource type="Script" uid="uid://nlajt5b4xgpb" path="res://Components/Spawner/spawner.gd" id="1_2ffuk"]
+
+[node name="Spawner" type="Area2D"]
+script = ExtResource("1_2ffuk")
+spawn_time = 1.0
