@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://oxkywujdv8ws"]
+
+[ext_resource type="Script" uid="uid://d0n43xuhfatqm" path="res://Entities/Consumable/consumable.gd" id="1_m7l2w"]
+[ext_resource type="Script" uid="uid://dvhsvxw4b7nx1" path="res://Components/EnemyMovementComponent/nonplayer_movement_component.gd" id="2_rukbr"]
+
+[node name="Consumable" type="Area2D"]
+script = ExtResource("1_m7l2w")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="NonPlayerMovementComponent" type="Node" parent="."]
+script = ExtResource("2_rukbr")
+metadata/_custom_type_script = "uid://dvhsvxw4b7nx1"

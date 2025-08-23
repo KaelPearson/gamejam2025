@@ -65,7 +65,6 @@ func check_air() -> void:
 		else:
 			head.texture = head_appearance['default']
 
-
 func change_zone() -> void:
 	var transition_time := 0.50
 	var transition_boost := 100.0
@@ -129,3 +128,9 @@ func _on_air_area_exited(body):
 	switch.emit("Water")
 	in_air = false
 	change_zone()
+
+func add_air(air_amt : int) -> void :
+	air = clamp(air + air_amt, 0, 100);
+
+func add_heat(heat_amt : int) -> void :
+	heat = clamp(heat + heat_amt, 0, 100);
