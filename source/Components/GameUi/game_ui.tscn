@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfnr1ybvd1iuf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mu0ov"]
+font_size = 54
+
+[node name="GameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0000"
+label_settings = SubResource("LabelSettings_mu0ov")

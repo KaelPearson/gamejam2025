@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckda7qy1a5d2c"]
+
+[ext_resource type="Texture2D" uid="uid://bslwalw0e6n7j" path="res://Assets/beachlayer.png" id="1_g5cwi"]
+[ext_resource type="Texture2D" uid="uid://l24g57cchtj8" path="res://Assets/Untitled_Artwork.png" id="1_wlde3"]
+[ext_resource type="Texture2D" uid="uid://btjs3rc15gpd1" path="res://Assets/waterlayer.png" id="3_eocme"]
+[ext_resource type="Texture2D" uid="uid://bitsbv0ynhl0e" path="res://Assets/topwavelayer.png" id="4_fnh6b"]
+[ext_resource type="Texture2D" uid="uid://b048gc52mww6r" path="res://Assets/botwavelayer.png" id="5_aurpg"]
+[ext_resource type="Texture2D" uid="uid://bgu7v4wmv55pe" path="res://Assets/midwavelayer.png" id="5_n63qm"]
+
+[node name="ParallaxBg" type="Node2D"]
+
+[node name="Sky" type="Parallax2D" parent="."]
+repeat_size = Vector2(2116, 0)
+autoscroll = Vector2(-70, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+position = Vector2(-13.9241, -54.4304)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("1_wlde3")
+centered = false
+
+[node name="Sand" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sand"]
+position = Vector2(1067, 677)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("1_g5cwi")
+
+[node name="Sea" type="Parallax2D" parent="."]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-120, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea"]
+position = Vector2(-15, -165)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("3_eocme")
+centered = false
+
+[node name="SeaTop" type="Parallax2D" parent="."]
+repeat_size = Vector2(2153, 0)
+autoscroll = Vector2(-110, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SeaTop"]
+position = Vector2(-15, -165)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("4_fnh6b")
+centered = false
+
+[node name="SeaMiddle" type="Parallax2D" parent="."]
+repeat_size = Vector2(2158, 0)
+autoscroll = Vector2(-125, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SeaMiddle"]
+position = Vector2(3, -273)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_aurpg")
+centered = false
+
+[node name="SeaBottom" type="Parallax2D" parent="."]
+repeat_size = Vector2(2147, 0)
+autoscroll = Vector2(-140, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="SeaBottom"]
+position = Vector2(-35, -511)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_n63qm")
+centered = false

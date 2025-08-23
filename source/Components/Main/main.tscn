@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvau8b2nxun3b"]
+
+[ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
+[ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
+font = ExtResource("1_bx5bx")
+font_size = 240
+font_color = Color(0.928228, 0.480421, 0.337801, 1)
+shadow_size = 5
+shadow_color = Color(1, 1, 1, 0.690196)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6wt8"]
+font_size = 50
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_bx5bx"]
+resource_name = "press_start"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressAny:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.203922), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pnopi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressAny:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6wt8"]
+_data = {
+&"RESET": SubResource("Animation_pnopi"),
+&"press_start": SubResource("Animation_bx5bx")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBg" parent="." instance=ExtResource("1_pnopi")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_bottom = 300
+
+[node name="MainTitle" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "SURFBORK"
+label_settings = SubResource("LabelSettings_pnopi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressAny" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Press Any Button to Start"
+label_settings = SubResource("LabelSettings_j6wt8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j6wt8")
+}
+autoplay = "press_start"
