@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6f4ua4h887yq"]
+
+[ext_resource type="PackedScene" uid="uid://oxkywujdv8ws" path="res://Entities/Consumable/consumable.tscn" id="1_t31is"]
+[ext_resource type="Texture2D" uid="uid://cwuwxipeigqrn" path="res://Assets/pickups/Collectables.webp" id="2_fiajf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3hyo"]
+atlas = ExtResource("2_fiajf")
+region = Rect2(127, 10, 43, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fiajf"]
+size = Vector2(48, 96)
+
+[node name="Consumable" instance=ExtResource("1_t31is")]
+heat_amt = -30.0
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("AtlasTexture_k3hyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+visible = false
+shape = SubResource("RectangleShape2D_fiajf")

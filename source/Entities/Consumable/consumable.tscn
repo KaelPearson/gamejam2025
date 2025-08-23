@@ -8,6 +8,7 @@ script = ExtResource("1_m7l2w")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
-[node name="NonPlayerMovementComponent" type="Node" parent="."]
+[node name="NonPlayerMovementComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("2_rukbr")
+node = NodePath("..")
 metadata/_custom_type_script = "uid://dvhsvxw4b7nx1"
