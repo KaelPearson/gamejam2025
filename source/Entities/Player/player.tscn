@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=9 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
+[ext_resource type="PackedScene" uid="uid://wexnsmoktknt" path="res://Components/MovementComponent/movement_component.tscn" id="3_4wf4l"]
+[ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
+[ext_resource type="PackedScene" uid="uid://cwp2uk6uql5kt" path="res://Components/HitboxComponent/hitbox_component.tscn" id="5_7a1se"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mv1ah"]
+size = Vector2(25, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lub02"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x1y6q"]
+radius = 13.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mv1ah")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_mv1ah")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_5c2io")]
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_4wf4l")]
+player = NodePath("..")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("hurtbox", "health_component") instance=ExtResource("4_01a4e")]
+hurtbox = NodePath("CollisionShape2D")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_lub02")
+
+[node name="hitbox_component" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("5_7a1se")]
+hitbox = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
+shape = SubResource("CircleShape2D_x1y6q")
+debug_color = Color(0.658789, 0.51407, 0.0890975, 0.42)
