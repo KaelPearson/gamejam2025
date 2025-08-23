@@ -8,9 +8,10 @@ var in_air := true
 
 @onready var board := $Board
 @onready var body := $Body
-@onready var head := $Head
+@onready var head := %Head
 
 @onready var debug := $debug
+
 
 var head_appearance := {
 	'default': preload("res://Assets/dog/Dog_Head_Default.png"),
@@ -24,6 +25,8 @@ var body_appearance := {
 	'stand': preload("res://Assets/dog/Dog_Body_1.png"),
 	'transition': preload("res://Assets/dog/Dog_Body_2.png"),
 	'crouch': preload("res://Assets/dog/Dog_Body_3.png"),
+	'up': preload("res://Assets/dog/Dog_Body_Up.webp"),
+	'down': preload("res://Assets/dog/Dog_Body_Down.webp"),
 }
 
 var board_appearance := {
@@ -47,6 +50,8 @@ func _process(delta: float) -> void:
 		check_heat()
 	else:
 		check_air()
+	
+	check_velocity()
 
 
 func check_heat() -> void:
@@ -65,10 +70,29 @@ func check_air() -> void:
 		else:
 			head.texture = head_appearance['default']
 
+func check_velocity() -> void:
+	if velocity.y > 250:
+		if in_air:
+			body.texture = body_appearance["down"]
+		else:
+			body.rotation = deg_to_rad(15.0)
+		board.rotation = deg_to_rad(15.0)
+		
+	elif velocity.y < -250:
+		if in_air:
+			body.texture = body_appearance["up"]
+		else:
+			body.rotation = deg_to_rad(-15.0)
+		board.rotation = deg_to_rad(-15.0)
+	else:
+		if in_air:
+			body.texture = body_appearance["stand"]
+		else:
+			body.rotation = deg_to_rad(0.0)
+		board.rotation = deg_to_rad(0.0)
+
 func change_zone() -> void:
 	var transition_time := 0.50
-	var transition_boost := 100.0
-	
 	var effects_1_offset := 64
 	var effects_2_offset := 22
 	if in_air:
@@ -77,14 +101,10 @@ func change_zone() -> void:
 		board.position.x += effects_1_offset
 	else: 
 		# coming up from the water
-		transition_boost *= -1
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset
 	transition()
-
-	velocity.y += transition_boost
 	await get_tree().create_timer(transition_time).timeout
-	
 	# this state should now be the opposite of what it was before
 	board.texture = board_appearance["default"]
 	if in_air:
@@ -96,16 +116,14 @@ func change_zone() -> void:
 
 func transition() -> void:
 	body.texture = body_appearance["transition"]
-	#head.position = Vector2(0.0, -153.5)
-	#body.position = Vector2(-21.0, -67.5)
-	head.position = Vector2(13.0, -148)
+	head.position = Vector2(13.0, -85.0)
 	body.rotation = deg_to_rad(30.0)
 	body.position = Vector2(-36.0, -74)
 	board.position = Vector2(-28.0, -10.5)
 
 func stand() -> void:
 	body.texture = body_appearance["stand"]
-	head.position = Vector2(0.0, -153.5)
+	head.position = Vector2(13.0, -88.5)
 	body.position = Vector2(-21.0, -67.5)
 	body.rotation = 0.0
 	board.position = Vector2(-28.0, -10.5)
@@ -113,7 +131,7 @@ func stand() -> void:
 
 func crouch() -> void:
 	body.texture = body_appearance["crouch"]
-	head.position = Vector2(30.0, -113.0)
+	head.position = Vector2(70.0, -70.5)
 	body.position = Vector2(-42.0, -39.0)
 	body.rotation = 0.0
 	board.position = Vector2(-28.0, -10.5)

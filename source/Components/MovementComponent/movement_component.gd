@@ -28,10 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func transition_gravity(zone: String) -> void:
-	#var tween = create_tween()
-	if (zone == "Air" and gravity < 0):
-		gravity = max_gravity
-		#tween.tween_property(self, "gravity", max_gravity, 3)
-	if (zone == "Water" and gravity > 0):
-		#tween.tween_property(self, "gravity", max_gravity * -1, 3)
-		gravity = max_gravity * -1
+	var tween = create_tween()
+	if (zone == "Air"):
+		tween.tween_property(self, "gravity", max_gravity, 0.25)
+	if (zone == "Water"):
+		tween.tween_property(self, "gravity", max_gravity * -1, 0.25)
