@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjatrqs22h614"]
+[gd_scene load_steps=4 format=3 uid="uid://cjatrqs22h614"]
 
 [ext_resource type="Script" uid="uid://besjootl5e0gj" path="res://Components/HitboxComponent/hitbox_component.gd" id="1_egd74"]
+[ext_resource type="Script" uid="uid://dvhsvxw4b7nx1" path="res://Components/EnemyMovementComponent/enemy_movement_component.gd" id="2_xugip"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xugip"]
 
 [node name="Enemy" type="Node2D"]
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+position = Vector2(384, 90)
+scale = Vector2(75.5, 57.5)
+texture = SubResource("PlaceholderTexture2D_xugip")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("1_egd74")
 metadata/_custom_type_script = "uid://besjootl5e0gj"
+
+[node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_xugip")
+enemy = NodePath("..")
+metadata/_custom_type_script = "uid://dvhsvxw4b7nx1"
