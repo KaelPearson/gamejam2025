@@ -1,7 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfnr1ybvd1iuf"]
+[gd_scene load_steps=14 format=3 uid="uid://dfnr1ybvd1iuf"]
+
+[ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_3yebc"]
+[ext_resource type="Script" uid="uid://bgl88wuay2ewk" path="res://Components/GameUi/game_ui.gd" id="1_sw4d4"]
+[ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="1_v5k42"]
+[ext_resource type="Texture2D" uid="uid://jjdmila2jw1s" path="res://Assets/ui/Thermometers.webp" id="3_ar4dj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mu0ov"]
-font_size = 54
+font = ExtResource("1_3yebc")
+font_size = 59
+font_color = Color(1, 0.574279, 0.313106, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yebc"]
+font = ExtResource("1_3yebc")
+font_size = 79
+font_color = Color(1, 0.419608, 0.388235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kyel"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5p1t"]
+bg_color = Color(1, 0.192157, 0.203922, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sw4d4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbcrw"]
+bg_color = Color(0.142803, 0.666132, 0.782405, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c46ae"]
+bg_color = Color(1, 0.192157, 0.203922, 1)
+corner_radius_top_left = 29
+corner_radius_top_right = 35
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2ng5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw4d4"]
+font = ExtResource("1_3yebc")
+font_size = 32
+font_color = Color(1, 1, 0.572549, 1)
 
 [node name="GameUi" type="Control"]
 layout_mode = 3
@@ -10,13 +51,126 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sw4d4")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-text = "0000"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="ScoreText" type="Label" parent="CanvasLayer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Score"
 label_settings = SubResource("LabelSettings_mu0ov")
+
+[node name="Score" type="Label" parent="CanvasLayer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_3yebc")
+
+[node name="GridContainer2" type="GridContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/h_separation = 5
+columns = 4
+
+[node name="Life" type="Label" parent="CanvasLayer/MarginContainer/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Life"
+label_settings = SubResource("LabelSettings_mu0ov")
+
+[node name="life1" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
+layout_mode = 2
+texture = ExtResource("1_v5k42")
+
+[node name="life2" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
+layout_mode = 2
+texture = ExtResource("1_v5k42")
+
+[node name="life3" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
+layout_mode = 2
+texture = ExtResource("1_v5k42")
+
+[node name="Heat" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1748.0
+offset_top = 617.0
+offset_right = 1766.0
+offset_bottom = 985.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7kyel")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m5p1t")
+step = 1.0
+rounded = true
+fill_mode = 3
+show_percentage = false
+
+[node name="Air" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1840.0
+offset_top = 681.0
+offset_right = 1857.0
+offset_bottom = 1010.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sw4d4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rbcrw")
+fill_mode = 3
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1735.0
+offset_top = 983.0
+offset_right = 1780.0
+offset_bottom = 1022.0
+theme_override_styles/background = SubResource("StyleBoxFlat_c46ae")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s2ng5")
+min_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="heat" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1758, 813)
+scale = Vector2(0.544156, 0.544156)
+texture = ExtResource("3_ar4dj")
+region_enabled = true
+region_rect = Rect2(25.9728, 8.99738, 136.41, 802.517)
+
+[node name="air" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1848, 847)
+scale = Vector2(0.544156, 0.544156)
+texture = ExtResource("3_ar4dj")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(240.332, 67.4589, 88.5781, 674.965)
+
+[node name="TempText" type="Label" parent="CanvasLayer"]
+offset_left = 1724.0
+offset_top = 1022.0
+offset_right = 1795.0
+offset_bottom = 1062.0
+text = "TEMP"
+label_settings = SubResource("LabelSettings_sw4d4")
+
+[node name="AirText" type="Label" parent="CanvasLayer"]
+offset_left = 1823.0
+offset_top = 1022.0
+offset_right = 1894.0
+offset_bottom = 1062.0
+text = "AIR"
+label_settings = SubResource("LabelSettings_sw4d4")
