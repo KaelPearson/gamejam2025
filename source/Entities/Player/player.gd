@@ -23,6 +23,8 @@ var in_air := true
 
 @onready var hurt_sfx := $HurtSFX
 @onready var death_sfx := $DeathSFX
+@onready var hurt_sfx_underwater := $HurtSFXUnderwater
+@onready var death_sfx_underwater := $DeathSFXUnderwater
 
 
 var head_appearance := {
@@ -92,9 +94,6 @@ func _process(delta: float) -> void:
 
 
 func check_heat() -> void:
-		#hurt_sfx.stream = hurt_sounds['above_water']
-		#death_sfx.stream = death_sounds['above_water']
-
 		if head.texture == head_appearance['hurt']:
 			return
 		if heat > 80:
@@ -106,8 +105,6 @@ func check_heat() -> void:
 		
 
 func check_air() -> void:
-		#hurt_sfx.stream = hurt_sounds['below_water']
-		#death_sfx.stream = death_sounds['below_water']
 		if head.texture == head_appearance['hurt']:
 				return
 		if air < 20:
@@ -244,15 +241,22 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 func _on_health_changed(health_amount):
 	lives += health_amount
 	if lives > 0:
-		hurt_sfx.play()
+		if in_air:
+			hurt_sfx.play()
+		else:
+			hurt_sfx_underwater.play()
 	if health_amount < 0:
 		head.texture = head_appearance["hurt"]
 		await get_tree().create_timer(0.5).timeout
 		head.texture = head_appearance["default"]
 
 func _on_death():
-	death_sfx.play()
-	await death_sfx.finished
+	if in_air:
+		death_sfx.play()
+		await death_sfx.finished
+	else:
+		death_sfx_underwater.play()
+		await death_sfx_underwater.finished
 	get_tree().reload_current_scene()
 	
 	
