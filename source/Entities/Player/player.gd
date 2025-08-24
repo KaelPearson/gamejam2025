@@ -118,7 +118,10 @@ func check_heat() -> void:
 			return
 		if heat > 80:
 			head.texture = head_appearance['hot_2']
-			flash_animation.play("flash");
+			if (!flash_animation.is_playing()) :
+				body.material.set("shader_parameter/flash_color", Vector3(0.2, 0.2, 0.2));
+				head.material.set("shader_parameter/flash_color", Vector3(0.2, 0.2, 0.2));
+				flash_animation.play("flash");
 		elif heat > 50:
 			head.texture = head_appearance['hot_1']
 		else:
@@ -130,7 +133,10 @@ func check_air() -> void:
 				return
 		if air < 20:
 			head.texture = head_appearance['air_2']
-			flash_animation.play("flash");
+			if (!flash_animation.is_playing()) :
+				body.material.set("shader_parameter/flash_color", Vector3(0.2, 0.2, 0.2));
+				head.material.set("shader_parameter/flash_color", Vector3(0.2, 0.2, 0.2));
+				flash_animation.play("flash");
 		elif air < 50:
 			head.texture = head_appearance['air_1']
 		else:
@@ -288,6 +294,10 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 func _on_health_changed(health_amount):
 	lives += health_amount
 	if lives > 0:
+		if (!flash_animation.is_playing()) :
+			body.material.set("shader_parameter/flash_color", Vector3(1, 0, 0));
+			head.material.set("shader_parameter/flash_color", Vector3(1, 0, 0));
+			flash_animation.play("flash");
 		if in_air:
 			hurt_sfx.play()
 		else:
@@ -304,6 +314,7 @@ func _on_death():
 	movement_component.can_move = false
 	$HurtboxComponent.monitorable = false
 	body.global_position = global_position
+	flash_animation.stop()
 	var tween = create_tween()
 	tween.parallel().tween_property(body, "rotation", deg_to_rad(-720 * 3), 3)
 	tween = create_tween()
