@@ -31,6 +31,7 @@ func show_random_quote() -> void:
 	quotes.text = '"' + dog_quotes[random_index] + '"'
 
 const head_hurt = preload("res://Assets/ui/dead.png")
+@onready var highscore: Label = $GameOver/MarginContainer2/GridContainer/highscore
 
 var score_value: float = 0.0
 var score_running: bool = false
@@ -91,3 +92,9 @@ func _on_health_changed(amount):
 		stop_score()
 		game_over.visible = true
 		finalscore.text = str(int(score_value))
+		_update_highscore()
+		
+func _update_highscore() -> void:
+	if score_value > Globals.high_score:
+		Globals.high_score = score_value
+	highscore.text = str(int(Globals.high_score))

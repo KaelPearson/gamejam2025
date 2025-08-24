@@ -2,6 +2,7 @@ extends Node
 
 var player = null
 var difficulty := 1.0
+var high_score = 0
 ## how much difficulty increases per second
 var difficulty_rate := 0.01
 
