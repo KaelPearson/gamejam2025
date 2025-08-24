@@ -3,12 +3,32 @@ extends Control
 @onready var score_label: Label = $CanvasLayer/MarginContainer/GridContainer/Score
 @onready var heat: ProgressBar = $CanvasLayer/Heat
 @onready var air: ProgressBar = $CanvasLayer/Air
+@onready var finalscore: Label = $GameOver/MarginContainer2/GridContainer/finalscore
+@onready var game_over: CanvasLayer = $GameOver
+@onready var quotes: Label = $GameOver/MarginContainer/quotes
 
 @onready var life_pool: Array[TextureRect] = [
 	$CanvasLayer/MarginContainer/GridContainer2/life1,
 	$CanvasLayer/MarginContainer/GridContainer2/life2,
 	$CanvasLayer/MarginContainer/GridContainer2/life3,
 ]
+
+var dog_quotes := [
+	"Stay pawsitive — you’ll fetch victory next time!",
+	"Don’t roll over yet, give it another try!",
+	"Every dog has its day… and yours is coming.",
+	"Keep barking up that tree — you’re close!",
+	"Paw-sitively sure you’ll do better on the next run.",
+	"Ruff game… were you even trying?",
+	"You just let the tail wag the dog!",
+	"That was a dog-gone disaster.",
+	"Yikes, that performance was un-fur-gettable (in the worst way).",
+	"Sit. Stay. Respawn."
+]
+
+func show_random_quote() -> void:
+	var random_index = randi() % dog_quotes.size()
+	quotes.text = '"' + dog_quotes[random_index] + '"'
 
 const head_hurt = preload("res://Assets/ui/dead.png")
 
@@ -27,10 +47,12 @@ func _ready() -> void:
 		child.visible = false
 	heat.value = 0.0
 	air.value = 100.0
+	show_random_quote()
 
 func start_score() -> void:
 	for child in get_children():
 		child.visible = true
+	game_over.visible = false
 	
 	score_running = true
 
@@ -51,7 +73,7 @@ func _on_player_set():
 
 func _on_heat_change(new_heat):
 	if score_running:
-		heat.value = clampf(new_heat, 0, 100)
+		heat.value = clampf(new_heat, 0, 100) 
 
 func _on_air_change(new_air):
 	if score_running:
@@ -67,3 +89,8 @@ func _on_health_changed(amount):
 	for health in range(max_health):
 		if health >= current_health:
 			life_pool[health].texture = head_hurt
+			
+	if current_health <= 0:
+		stop_score()
+		game_over.visible = true
+		finalscore.text = str(int(score_value))

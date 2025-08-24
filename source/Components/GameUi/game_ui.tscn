@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfnr1ybvd1iuf"]
+[gd_scene load_steps=18 format=3 uid="uid://dfnr1ybvd1iuf"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_3yebc"]
 [ext_resource type="Script" uid="uid://bgl88wuay2ewk" path="res://Components/GameUi/game_ui.gd" id="1_sw4d4"]
@@ -43,6 +43,22 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 font = ExtResource("1_3yebc")
 font_size = 32
 font_color = Color(1, 1, 0.572549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7kyel"]
+font = ExtResource("1_3yebc")
+font_size = 200
+font_color = Color(0.972549, 0.631373, 0.611765, 1)
+outline_size = 4
+outline_color = Color(0.27451, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5p1t"]
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbcrw"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_c46ae"]
+font_size = 80
 
 [node name="GameUi" type="Control"]
 layout_mode = 3
@@ -177,3 +193,64 @@ offset_right = 1894.0
 offset_bottom = 1062.0
 text = "AIR"
 label_settings = SubResource("LabelSettings_sw4d4")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+
+[node name="gameoverText" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -474.0
+offset_top = -122.5
+offset_right = 474.0
+offset_bottom = 122.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_7kyel")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 400
+
+[node name="quotes" type="Label" parent="GameOver/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "asdasdasdasd"
+label_settings = SubResource("LabelSettings_m5p1t")
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameOver"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -23.0
+offset_right = 46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 325
+
+[node name="GridContainer" type="GridContainer" parent="GameOver/MarginContainer2"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="GameOver/MarginContainer2/GridContainer"]
+layout_mode = 2
+text = "SCORE"
+label_settings = SubResource("LabelSettings_rbcrw")
+
+[node name="finalscore" type="Label" parent="GameOver/MarginContainer2/GridContainer"]
+layout_mode = 2
+text = "0000"
+label_settings = SubResource("LabelSettings_c46ae")
