@@ -14,6 +14,7 @@ var air_value: float = 100.0
 @export var air_decrease_rate: float = 1.0
 
 func _ready() -> void:
+	Globals.player_set.connect(_on_player_set)
 	# Hide all children at the start
 	for child in get_children():
 		child.visible = false
@@ -21,9 +22,9 @@ func _ready() -> void:
 	air.value = air_value
 
 func _process(delta: float) -> void:
-	if score_running:
-		score_value += 10 * delta  
-		score_label.text = str(int(score_value))
+	#if score_running:
+		#score_value += 10 * delta
+		#score_label.text = str(int(score_value))
 		
 	#for heat
 	heat_value += heat_increase_rate * delta
@@ -49,3 +50,12 @@ func start_score() -> void:
 
 func stop_score() -> void:
 	score_running = false
+
+## Connect to player signals here
+## Player signals cannot be set in the ready function as a player may not be set when the UI is first ready.
+func _on_player_set():
+	Globals.player.score_update.connect(_on_score_change)
+
+func _on_score_change(new_score):
+	if score_running:
+		score_label.text = str(int(new_score))

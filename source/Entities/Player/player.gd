@@ -52,10 +52,13 @@ signal switch(type: String)
 
 ## signal for when coins are updated for UI to attach to
 signal coin_update(new_coins : int);
+signal score_update(new_score: int);
 signal heat_update(new_heat : float);
 signal air_update(new_air : float);
 
 func _ready() -> void:
+	Globals.player = self
+	Globals.player_set.emit()
 	health_component.health_changed.connect(_on_health_changed)
 	health_component.death.connect(_on_death)
 	var parent := get_parent()
@@ -196,15 +199,19 @@ func add_heat(heat_amt : int) -> void :
 func add_coins(coin_amt : int) -> void :
 	coins += coin_amt;
 	score += 20; 
+	score_update.emit(score)
 	coin_update.emit(coins);
 
 ## + heat when above - oxygen when below
 func add_overtimes(delta : float) -> void :
 	if (in_air) :
 		heat += delta * heat_time;
+		heat_update.emit(heat)
 	else :
 		air -= delta * oxy_time;
+		air_update.emit(air)
 	score +=  delta * score_time
+	score_update.emit(score)
 
 
 func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: int) -> void:

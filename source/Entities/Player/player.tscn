@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmgo7xo0xv4w1" path="res://Assets/board/Board.png" id="4_7a1se"]
 [ext_resource type="Texture2D" uid="uid://b31awv46ke48d" path="res://Assets/dog/Dog_Body_1.png" id="6_ap3xn"]
 [ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="6_x1y6q"]
-[ext_resource type="Texture2D" uid="uid://batwbg36gw3xn" path="res://Assets/particles/Simple_Bubble.png" id="9_x1y6q"]
+[ext_resource type="Texture2D" uid="uid://bjk1spmjmj834" path="res://Assets/particles/Simple_Bubble.png" id="9_x1y6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
 size = Vector2(79, 169)
