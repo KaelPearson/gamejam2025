@@ -176,6 +176,7 @@ shape = SubResource("RectangleShape2D_hv812")
 [node name="HeartSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2074, -52)
+spawn_time = 60.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("11_hv812")])
 
