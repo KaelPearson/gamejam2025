@@ -189,7 +189,7 @@ visible = false
 position = Vector2(2133, 1737)
 spawn_time = 8.0
 col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("7_prln6"), ExtResource("10_4pdxb"), ExtResource("11_rbpkj")])
+to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("10_4pdxb"), ExtResource("11_rbpkj")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterConsumeableSpawner"]
 position = Vector2(-18, 268.5)
@@ -201,7 +201,7 @@ position = Vector2(2071, 76)
 scale = Vector2(1, 1.12)
 spawn_time = 10.0
 col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("9_jgaej"), ExtResource("7_prln6"), ExtResource("7_prln6"), ExtResource("9_jgaej")])
+to_spawn = Array[PackedScene]([ExtResource("9_jgaej"), ExtResource("7_prln6"), ExtResource("7_prln6"), ExtResource("9_jgaej")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirConsumableSpawner"]
 position = Vector2(2, 437)

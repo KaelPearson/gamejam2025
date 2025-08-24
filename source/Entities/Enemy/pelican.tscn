@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dfhrbxifbk6wn" path="res://Assets/enemy/Pelican_Regular_2.png" id="3_0x3k0"]
 [ext_resource type="Texture2D" uid="uid://dkoyejemoc0ig" path="res://Assets/enemy/Pelican_Regular_3.png" id="4_rikyy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gfk73"]
-radius = 71.1126
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_bomqy"]
 animations = [{
 "frames": [{
@@ -25,20 +22,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfk73"]
+radius = 71.1126
+
 [node name="Enemy" instance=ExtResource("1_gfk73")]
 
-[node name="HitboxComponent" parent="." index="1" node_paths=PackedStringArray("hitbox")]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_bomqy")
+autoplay = "default"
+frame_progress = 0.653433
+
+[node name="HitboxComponent" parent="." index="2" node_paths=PackedStringArray("hitbox")]
 position = Vector2(-47, 0)
 scale = Vector2(1.62233, 0.373471)
 hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(39, 19)
-scale = Vector2(0.463496, 1)
+position = Vector2(45.6134, 34.8086)
+scale = Vector2(0.274979, 0.384321)
 shape = SubResource("CircleShape2D_gfk73")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_bomqy")
-autoplay = "default"
-frame_progress = 0.653433
