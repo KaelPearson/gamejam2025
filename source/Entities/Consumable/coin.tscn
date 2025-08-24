@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://beldbwnadn351"]
+[gd_scene load_steps=7 format=3 uid="uid://beldbwnadn351"]
 
 [ext_resource type="PackedScene" uid="uid://oxkywujdv8ws" path="res://Entities/Consumable/consumable.tscn" id="1_njnmh"]
 [ext_resource type="Texture2D" uid="uid://cwuwxipeigqrn" path="res://Assets/pickups/Collectables.webp" id="2_olhjo"]
+[ext_resource type="AudioStream" uid="uid://c22c56ux68sq7" path="res://Assets/sfx/coin-recieved.wav" id="3_8vcjy"]
+[ext_resource type="AudioStream" uid="uid://d1gvn3d02e3et" path="res://Assets/sfx/underwater-coin.wav" id="4_571gx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vcjy"]
 atlas = ExtResource("2_olhjo")
@@ -19,3 +21,9 @@ texture = SubResource("AtlasTexture_8vcjy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_571gx")
+
+[node name="PickupSFX" parent="." index="3"]
+stream = ExtResource("3_8vcjy")
+
+[node name="PickupSFXUnderwater" parent="." index="4"]
+stream = ExtResource("4_571gx")

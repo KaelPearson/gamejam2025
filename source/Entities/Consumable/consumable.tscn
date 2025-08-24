@@ -12,3 +12,7 @@ script = ExtResource("1_m7l2w")
 script = ExtResource("2_rukbr")
 node = NodePath("..")
 metadata/_custom_type_script = "uid://dvhsvxw4b7nx1"
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PickupSFXUnderwater" type="AudioStreamPlayer2D" parent="."]
