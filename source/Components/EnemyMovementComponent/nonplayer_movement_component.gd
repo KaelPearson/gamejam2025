@@ -8,8 +8,7 @@ class_name NonPlayerMovementComponent;
 @export var node : Node2D;
 
 func _ready() -> void:
-	# Add the speed of speed
-	speed += GameSettings.curr_speed
+	speed = randf_range(speed, speed * 1.25)
 
 func _process(delta: float) -> void:
-	node.global_position.x -= speed * Globals.difficulty * delta;
+	node.global_position.x -= ((speed * Globals.difficulty) + (5 * pow(Globals.difficulty, 2))) * delta;
