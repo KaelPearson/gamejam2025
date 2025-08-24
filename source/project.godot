@@ -30,3 +30,8 @@ window/main_scene="uid://ckda7qy1a5d2c"
 [layer_names]
 
 2d_physics/layer_3="in_air"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
