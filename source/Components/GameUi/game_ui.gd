@@ -54,6 +54,8 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (game_over.visible):
 		get_tree().reload_current_scene()
+	if (event.is_action_pressed("ui_cancel")) :
+		tutorial.visible = !tutorial.visible;
 
 func start_score() -> void:
 	for child in get_children():

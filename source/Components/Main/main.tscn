@@ -127,6 +127,9 @@ size_flags_vertical = 8
 text = "Press Any Button to Start"
 label_settings = SubResource("LabelSettings_j6wt8")
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_j6wt8")
