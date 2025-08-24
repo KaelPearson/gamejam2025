@@ -260,13 +260,15 @@ func add_overtimes(delta : float) -> void :
 	score_update.emit(score)
 
 
-func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: int) -> void:
+func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: int, life_amt : int) -> void:
 	if (heat_amt):
 		add_heat(heat_amt);
 	if (air_amt) :
 		add_air(air_amt);
 	if (coin_amt) :
 		add_coins(coin_amt);
+	if (life_amt) : 
+		health_component.heal(life_amt);
 
 func _on_health_changed(health_amount):
 	lives += health_amount

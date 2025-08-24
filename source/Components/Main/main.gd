@@ -16,7 +16,8 @@ var menu_visible : bool = true;
 	$AirConsumableSpawner,
 	$AnglerSpawner,
 	$WaterConsumeableSpawner,
-	$CatFishSpawner
+	$CatFishSpawner,
+	$HeartSpawner
 ]
 
 

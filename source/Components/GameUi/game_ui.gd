@@ -31,6 +31,7 @@ func show_random_quote() -> void:
 	quotes.text = '"' + dog_quotes[random_index] + '"'
 
 const head_hurt = preload("res://Assets/ui/dead.png")
+const head_full = preload("res://Assets/ui/alive.png")
 @onready var highscore: Label = $GameOver/MarginContainer2/GridContainer/highscore
 
 var score_value: float = 0.0
@@ -82,11 +83,18 @@ func _on_score_change(new_score):
 		score_value = new_score
 		score_label.text = str(int(new_score))
 
-func _on_health_changed(amount):
-	current_health += amount
+func _on_health_changed(current_health_amt):
+	# just need to make this work...
+	if (current_health_amt > current_health) :
+		for health in range(max_health):
+			if health <= current_health:
+				life_pool[health].texture = head_full
+		
+	current_health = current_health_amt
 	for health in range(max_health):
 		if health >= current_health:
 			life_pool[health].texture = head_hurt
+		
 			 
 	if current_health <= 0:
 		stop_score()

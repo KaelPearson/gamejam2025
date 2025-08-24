@@ -34,6 +34,6 @@ func damage(amount: int) -> void:
 
 func change_health(amount: int) -> void:
 	current_health = clampi(current_health + amount, 0, max_health)
-	emit_signal("health_changed", amount)
+	emit_signal("health_changed", current_health)
 	if (current_health <= 0) :
 		death.emit();

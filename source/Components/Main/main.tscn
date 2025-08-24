@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=32 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cc8vtd5hivf36" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
 [ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
+[ext_resource type="PackedScene" uid="uid://bl8hdi15rys1w" path="res://Entities/Consumable/life.tscn" id="11_hv812"]
 [ext_resource type="PackedScene" uid="uid://b6f4ua4h887yq" path="res://Entities/Consumable/ice_cream.tscn" id="11_rbpkj"]
 [ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
 [ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
@@ -79,6 +80,9 @@ size = Vector2(456, 767)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv812"]
 size = Vector2(422, 1658.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_080i5"]
+size = Vector2(118, 4380.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbpkj"]
 size = Vector2(394, 1475)
 
@@ -136,6 +140,7 @@ collision_layer = 0
 collision_mask = 1
 
 [node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+visible = false
 position = Vector2(2074, 66)
 spawn_time = 5.0
 col_shape = NodePath("CollisionShape2D")
@@ -167,6 +172,16 @@ to_spawn = Array[PackedScene]([ExtResource("10_0emak")])
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatFishSpawner"]
 position = Vector2(-10, 332)
 shape = SubResource("RectangleShape2D_hv812")
+
+[node name="HeartSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+visible = false
+position = Vector2(2074, -52)
+col_shape = NodePath("CollisionShape2D")
+to_spawn = Array[PackedScene]([ExtResource("11_hv812")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartSpawner"]
+position = Vector2(16, 2237.75)
+shape = SubResource("RectangleShape2D_080i5")
 
 [node name="WaterConsumeableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
@@ -217,4 +232,5 @@ shape = SubResource("RectangleShape2D_kwvup")
 [editable path="AirEnemySpawner"]
 [editable path="AnglerSpawner"]
 [editable path="CatFishSpawner"]
+[editable path="HeartSpawner"]
 [editable path="WaterConsumeableSpawner"]
