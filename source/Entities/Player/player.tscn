@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=18 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b31awv46ke48d" path="res://Assets/dog/Dog_Body_1.png" id="6_ap3xn"]
 [ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="6_x1y6q"]
 [ext_resource type="AudioStream" uid="uid://buk0nl33nqymv" path="res://Assets/sfx/dog_hurt.wav" id="9_ap3xn"]
+[ext_resource type="AudioStream" uid="uid://ca4ke56cq5yl3" path="res://Assets/sfx/bubbly_sound.wav" id="9_r8fok"]
 [ext_resource type="Texture2D" uid="uid://pw8dkk4kv66o" path="res://Assets/particles/Simple_Bubble.png" id="9_x1y6q"]
 [ext_resource type="AudioStream" uid="uid://dojmry0j62gbp" path="res://Assets/sfx/death_howl.wav" id="10_iplt1"]
 [ext_resource type="AudioStream" uid="uid://c5k7a1iqhc5e0" path="res://Assets/sfx/dog_hurt_undewater.wav" id="11_iplt1"]
@@ -70,6 +71,11 @@ amount = 50
 texture = ExtResource("9_x1y6q")
 visibility_rect = Rect2(-390, -50, 400, 200)
 process_material = SubResource("ParticleProcessMaterial_lub02")
+
+[node name="BubbleSound" type="AudioStreamPlayer2D" parent="BubbleParticles"]
+position = Vector2(114, -7)
+stream = ExtResource("9_r8fok")
+volume_db = 11.886
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_ap3xn")
