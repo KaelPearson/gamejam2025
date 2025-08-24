@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvau8b2nxun3b"]
+[gd_scene load_steps=18 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
@@ -65,6 +65,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqwa"]
 size = Vector2(320, 1065.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwvup"]
+size = Vector2(207, 1627)
+
 [node name="Main" type="Node" node_paths=PackedStringArray("menu_ui")]
 script = ExtResource("1_j6wt8")
 menu_ui = NodePath("MarginContainer")
@@ -118,3 +121,10 @@ to_spawn = Array[PackedScene]([ExtResource("6_prln6"), ExtResource("7_prln6"), E
 position = Vector2(0, 559.375)
 shape = SubResource("RectangleShape2D_4pqwa")
 debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
+
+[node name="Despawner" type="Area2D" parent="."]
+position = Vector2(-404, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
+position = Vector2(93.5, 803.5)
+shape = SubResource("RectangleShape2D_kwvup")

@@ -58,7 +58,7 @@ func _ready() -> void:
 		parent.in_air_area.area_exited.connect(_on_air_area_exited)
 
 func _process(delta: float) -> void:
-	debug.text = "%.0f %.0f" % [global_position.y, velocity.y]
+	debug.text = "Health: %d\nHeat: %.0f\nAir: %.0f\nScore: %d" % [lives, heat, air, score]
 	if in_air:
 		check_heat()
 	else:

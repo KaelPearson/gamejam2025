@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1r7"]
 size = Vector2(152, 32)
 
-[node name="Enemy" instance=ExtResource("1_f00ce")]
+[node name="Enemy2" instance=ExtResource("1_f00ce")]
 
 [node name="EnemySprite" parent="." index="0"]
 position = Vector2(128, 72)
@@ -16,7 +16,6 @@ texture = ExtResource("2_2v1r7")
 hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-visible = false
 light_mask = 0
 position = Vector2(116, 80)
 shape = SubResource("RectangleShape2D_2v1r7")

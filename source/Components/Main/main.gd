@@ -10,6 +10,10 @@ var player_scene = preload("res://Entities/Player/player.tscn")
 var menu_visible : bool = true;
 
 @onready var in_air_area : Area2D = $InAirArea
+@onready var despawner: Area2D = $Despawner
+
+func _ready() -> void:
+	despawner.area_entered.connect(_on_despawner_entered)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (menu_visible) :
@@ -31,4 +35,7 @@ func _spawn_player() -> void:
 	player_instance.velocity.y = -750
 	var tween = create_tween()
 	tween.tween_property(player_instance, "global_position:x", 350, 1.0)
-	
+
+
+func _on_despawner_entered(area):
+	area.get_parent().queue_free()
