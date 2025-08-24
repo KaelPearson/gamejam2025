@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=23 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
@@ -66,7 +66,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqwa"]
-size = Vector2(320, 1065.25)
+size = Vector2(320, 697.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xvty"]
+size = Vector2(320, 697.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o8fy"]
+size = Vector2(320, 350.656)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwvup"]
 size = Vector2(207, 1627)
@@ -116,12 +122,35 @@ collision_mask = 1
 
 [node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 position = Vector2(2071, 14)
+spawn_time = 5.0
 col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("6_prln6"), ExtResource("7_prln6"), ExtResource("8_d7od6"), ExtResource("9_jgaej"), ExtResource("10_mljux"), ExtResource("11_1o8fy"), ExtResource("12_2xvty"), ExtResource("13_4pdxb")])
+to_spawn = Array[PackedScene]([ExtResource("6_prln6")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirEnemySpawner"]
-position = Vector2(0, 559.375)
+position = Vector2(0, 357)
 shape = SubResource("RectangleShape2D_4pqwa")
+debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
+
+[node name="AirConsumableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+position = Vector2(2071, 14)
+spawn_time = 10.0
+col_shape = NodePath("CollisionShape2D")
+to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("8_d7od6"), ExtResource("9_jgaej"), ExtResource("10_mljux"), ExtResource("7_prln6"), ExtResource("7_prln6")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AirConsumableSpawner"]
+position = Vector2(0, 357)
+shape = SubResource("RectangleShape2D_2xvty")
+debug_color = Color(0.309619, 0.84319, 0.446163, 0.419608)
+
+[node name="GroundEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+position = Vector2(2076, 766)
+spawn_time = 8.0
+col_shape = NodePath("CollisionShape2D")
+to_spawn = Array[PackedScene]([ExtResource("11_1o8fy"), ExtResource("12_2xvty"), ExtResource("13_4pdxb")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundEnemySpawner"]
+position = Vector2(-3, 175)
+shape = SubResource("RectangleShape2D_1o8fy")
 debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
 
 [node name="Despawner" type="Area2D" parent="."]

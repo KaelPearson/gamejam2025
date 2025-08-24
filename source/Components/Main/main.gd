@@ -9,16 +9,24 @@ var menu_visible : bool = true;
 
 @onready var in_air_area : Area2D = $InAirArea
 @onready var despawner: Area2D = $Despawner
+@onready var spawners := [
+	$AirEnemySpawner,
+	$GroundEnemySpawner,
+	$AirConsumableSpawner,
+]
 
 
 func _ready() -> void:
 	despawner.area_entered.connect(_on_despawner_entered)
-	
+	for spawner in spawners:
+		spawner.enabled = false
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (menu_visible) :
 		_hide_main_menu();
 		_spawn_player()
+		for spawner in spawners:
+			spawner.enabled = true
 	
 	
 func _hide_main_menu() -> void :

@@ -12,7 +12,7 @@ class_name Spawner;
 @onready var col_center_pos = col_shape.position;
 @onready var col_size = col_shape.shape.extents;
 
-var enabled = true;
+var enabled = false;
 func _ready() -> void:
 	var spawn_timer = Timer.new();
 	add_child(spawn_timer);
