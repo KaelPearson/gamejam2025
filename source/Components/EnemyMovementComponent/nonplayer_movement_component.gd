@@ -7,5 +7,9 @@ class_name NonPlayerMovementComponent;
 ## Obst enemy etc
 @export var node : Node2D;
 
+func _ready() -> void:
+	# Add the speed of speed
+	speed += GameSettings.curr_speed
+
 func _process(delta: float) -> void:
 	node.global_position.x -= speed * delta;

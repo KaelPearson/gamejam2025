@@ -2,8 +2,6 @@ extends Node
 
 var player_scene = preload("res://Entities/Player/player.tscn")
 
-## Determines how fast projectiles should be speeding up
-@export var increase_speed_amt : float = 1;
 
 ## Menu Container
 @export var menu_ui : Control;
@@ -12,8 +10,10 @@ var menu_visible : bool = true;
 @onready var in_air_area : Area2D = $InAirArea
 @onready var despawner: Area2D = $Despawner
 
+
 func _ready() -> void:
 	despawner.area_entered.connect(_on_despawner_entered)
+	
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (menu_visible) :
