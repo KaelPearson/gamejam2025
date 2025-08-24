@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl8hdi15rys1w"]
+[gd_scene load_steps=6 format=3 uid="uid://bl8hdi15rys1w"]
 
 [ext_resource type="PackedScene" uid="uid://oxkywujdv8ws" path="res://Entities/Consumable/consumable.tscn" id="1_4yxqc"]
 [ext_resource type="Texture2D" uid="uid://cm1n8h5cq0j4e" path="res://Assets/ui/alive.png" id="2_pdxv1"]
 [ext_resource type="AudioStream" uid="uid://dinnv4i02b37o" path="res://Assets/sfx/one_up.mp3" id="3_d5500"]
+[ext_resource type="AudioStream" uid="uid://clxhjwk7fxs3b" path="res://Assets/sfx/one_up_underwater.mp3" id="4_k42g1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdxv1"]
 radius = 44.0
@@ -17,7 +18,7 @@ texture = ExtResource("2_pdxv1")
 stream = ExtResource("3_d5500")
 
 [node name="PickupSFXUnderwater" parent="." index="3"]
-stream = ExtResource("3_d5500")
+stream = ExtResource("4_k42g1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CircleShape2D_pdxv1")

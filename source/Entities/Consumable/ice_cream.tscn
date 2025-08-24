@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6f4ua4h887yq"]
+[gd_scene load_steps=7 format=3 uid="uid://b6f4ua4h887yq"]
 
 [ext_resource type="PackedScene" uid="uid://oxkywujdv8ws" path="res://Entities/Consumable/consumable.tscn" id="1_t31is"]
 [ext_resource type="Texture2D" uid="uid://cwuwxipeigqrn" path="res://Assets/pickups/Collectables.webp" id="2_fiajf"]
 [ext_resource type="AudioStream" uid="uid://cjhghnh67ti0a" path="res://Assets/sfx/food_eat.wav" id="3_k3hyo"]
+[ext_resource type="AudioStream" uid="uid://cpsxt67omxpy2" path="res://Assets/sfx/food_eat_underwater.wav" id="4_xfag4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3hyo"]
 atlas = ExtResource("2_fiajf")
@@ -26,5 +27,5 @@ stream = ExtResource("3_k3hyo")
 volume_db = 5.0
 
 [node name="PickupSFXUnderwater" parent="." index="4"]
-stream = ExtResource("3_k3hyo")
+stream = ExtResource("4_xfag4")
 volume_db = 5.0

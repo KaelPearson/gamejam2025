@@ -24,6 +24,7 @@ shape = SubResource("RectangleShape2D_571gx")
 
 [node name="PickupSFX" parent="." index="3"]
 stream = ExtResource("3_8vcjy")
+volume_db = -5.0
 
 [node name="PickupSFXUnderwater" parent="." index="4"]
 stream = ExtResource("4_571gx")
