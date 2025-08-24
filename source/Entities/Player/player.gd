@@ -21,6 +21,9 @@ var in_air := true
 
 @onready var debug := $debug
 
+@onready var hurt_sfx := $HurtSFX
+@onready var death_sfx := $DeathSFX
+
 
 var head_appearance := {
 	'default': preload("res://Assets/dog/Dog_Head_Default.png"),
@@ -43,6 +46,16 @@ var board_appearance := {
 	'default': preload("res://Assets/board/Board.png"),
 	'effects_1': preload("res://Assets/board/Board_Effects_1.png"),
 	'effects_2': preload("res://Assets/board/Board_Effects_2.png"),
+}
+
+var hurt_sounds := {
+	'above_water': preload("res://Assets/sfx/dog_hurt.wav"),
+	'below_water': preload("res://Assets/sfx/dog_hurt_undewater.wav"),
+}
+
+var death_sounds := {
+	'above_water': preload("res://Assets/sfx/death_howl.wav"),
+	'below_water': preload("res://Assets/sfx/death_howl_underwater.wav"),
 }
 
 var splash_scene := preload("res://Components/particles/splash_particles.tscn")
@@ -79,6 +92,9 @@ func _process(delta: float) -> void:
 
 
 func check_heat() -> void:
+		#hurt_sfx.stream = hurt_sounds['above_water']
+		#death_sfx.stream = death_sounds['above_water']
+
 		if head.texture == head_appearance['hurt']:
 			return
 		if heat > 80:
@@ -87,8 +103,11 @@ func check_heat() -> void:
 			head.texture = head_appearance['hot_1']
 		else:
 			head.texture = head_appearance['default']
+		
 
 func check_air() -> void:
+		#hurt_sfx.stream = hurt_sounds['below_water']
+		#death_sfx.stream = death_sounds['below_water']
 		if head.texture == head_appearance['hurt']:
 				return
 		if air < 20:
@@ -224,10 +243,16 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 
 func _on_health_changed(health_amount):
 	lives += health_amount
+	if lives > 0:
+		hurt_sfx.play()
 	if health_amount < 0:
 		head.texture = head_appearance["hurt"]
 		await get_tree().create_timer(0.5).timeout
 		head.texture = head_appearance["default"]
 
 func _on_death():
+	death_sfx.play()
+	await death_sfx.finished
 	get_tree().reload_current_scene()
+	
+	
