@@ -141,7 +141,8 @@ func check_velocity() -> void:
 func check_bubbles() -> void:
 	if movement_componet.space_held:
 		$BubbleParticles.emitting = true
-		$BubbleParticles/BubbleSound.play()
+		if !$BubbleParticles/BubbleSound.playing || $BubbleParticles/BubbleSound.get_playback_position() > 0.1:		
+			$BubbleParticles/BubbleSound.play()
 	else:
 		$BubbleParticles.emitting = false
 
