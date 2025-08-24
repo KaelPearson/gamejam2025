@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+@export var heat_time : float = 1;
+@export var oxy_time : float = 1;
+
+var coins : int = 0;
 var heat := 0.0
 var air := 100.0
 var score := 0
@@ -42,6 +46,11 @@ var board_appearance := {
 ## switch to "Air"/"Water"
 signal switch(type: String)
 
+## signal for when coins are updated for UI to attach to
+signal coin_update(new_coins : int);
+signal heat_update(new_heat : float);
+signal air_update(new_air : float);
+
 func _ready() -> void:
 	var parent := get_parent()
 	if parent.in_air_area:
@@ -56,6 +65,7 @@ func _process(delta: float) -> void:
 		check_air()
 	
 	check_velocity()
+	add_overtimes(delta);
 
 
 func check_heat() -> void:
@@ -155,6 +165,19 @@ func _on_air_area_exited(body):
 
 func add_air(air_amt : int) -> void :
 	air = clamp(air + air_amt, 0, 100);
+	air_update.emit(air);
 
 func add_heat(heat_amt : int) -> void :
 	heat = clamp(heat + heat_amt, 0, 100);
+	heat_update.emit(heat);
+
+func add_coins(coin_amt : int) -> void :
+	coins += coin_amt;
+	coin_update.emit(coins);
+
+## + heat when above - oxygen when below
+func add_overtimes(delta : float) -> void :
+	if (in_air) :
+		heat += delta * heat_time;
+	else :
+		air -= delta * oxy_time;

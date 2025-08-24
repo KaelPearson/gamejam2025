@@ -13,4 +13,4 @@ func _area_entered(_area: Area2D) -> void :
 		if (body is Player) :
 			body.add_air(air_amt);
 			body.add_heat(heat_amt);
-			print("add coin too TODO");
+			body.add_coins(coin_amt);
