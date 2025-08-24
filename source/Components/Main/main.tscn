@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=33 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o46u6s2t24um" path="res://Entities/Enemy/pelican_rider.tscn" id="7_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://beldbwnadn351" path="res://Entities/Consumable/coin.tscn" id="7_prln6"]
 [ext_resource type="PackedScene" uid="uid://dohxt3e852f7x" path="res://Entities/Consumable/oxy.tscn" id="9_jgaej"]
-[ext_resource type="PackedScene" uid="uid://cc8vtd5hivf36" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
+[ext_resource type="PackedScene" uid="uid://b06tf2vh4ixkf" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
 [ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
 [ext_resource type="PackedScene" uid="uid://bl8hdi15rys1w" path="res://Entities/Consumable/life.tscn" id="11_hv812"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
 [ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://dfnr1ybvd1iuf" path="res://Components/GameUi/game_ui.tscn" id="14_2xvty"]
+[ext_resource type="AudioStream" uid="uid://dly1jee27b2k1" path="res://Assets/music/Ready_To_Glide - No Lead.mp3" id="19_080i5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
 font = ExtResource("3_0emak")
@@ -229,6 +230,11 @@ position = Vector2(-214, 807)
 shape = SubResource("RectangleShape2D_kwvup")
 
 [node name="GameUi" parent="." instance=ExtResource("14_2xvty")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_080i5")
+volume_db = -5.0
+autoplay = true
 
 [editable path="AirEnemySpawner"]
 [editable path="AnglerSpawner"]

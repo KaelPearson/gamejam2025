@@ -20,6 +20,8 @@ var menu_visible : bool = true;
 	$HeartSpawner
 ]
 
+@onready var music_player = $MusicPlayer
+
 
 func _ready() -> void:
 	despawner.area_entered.connect(_on_despawner_entered)
@@ -36,6 +38,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 	
 func _hide_main_menu() -> void :
+	var current_position = music_player.get_playback_position()
+	music_player.stream = load("res://Assets/music/Ready_To_Glide - Lead.mp3")
+	music_player.play(current_position)
 	menu_visible = false;
 	while (menu_ui.position.y < 1000) :
 		menu_ui.position.y -= 40;

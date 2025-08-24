@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1i671u5poahf"
+path="res://.godot/imported/Ready_To_Glide - Lead.mp3-88ef92458d751d17de3c30dccbba03a5.mp3str"
+
+[deps]
+
+source_file="res://Assets/music/Ready_To_Glide - Lead.mp3"
+dest_files=["res://.godot/imported/Ready_To_Glide - Lead.mp3-88ef92458d751d17de3c30dccbba03a5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=110.0
+beat_count=0
+bar_beats=4
