@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctbv3dx5xm408" path="res://Assets/enemy/Cat_Fish.webp" id="2_2v1r7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v1r7"]
-size = Vector2(152, 32)
+size = Vector2(116, 11)
 
 [node name="Enemy2" instance=ExtResource("1_f00ce")]
 
@@ -17,5 +17,5 @@ hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 light_mask = 0
-position = Vector2(116, 80)
+position = Vector2(113, 82.5)
 shape = SubResource("RectangleShape2D_2v1r7")
