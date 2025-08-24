@@ -3,6 +3,10 @@ class_name Player
 
 var heat := 0.0
 var air := 100.0
+var score := 0
+@onready var lives :int = $HealthComponent.current_health
+
+
 var previous_in_air := true
 var in_air := true
 
