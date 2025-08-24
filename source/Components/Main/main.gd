@@ -14,6 +14,8 @@ var menu_visible : bool = true;
 	$AirEnemySpawner,
 	$GroundEnemySpawner,
 	$AirConsumableSpawner,
+	$AngleSpawner,
+	
 ]
 
 

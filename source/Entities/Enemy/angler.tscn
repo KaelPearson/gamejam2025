@@ -1,27 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqotnionn4fov"]
 
 [ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_pp7dy"]
+[ext_resource type="Script" uid="uid://ej3hyvwxo5tv" path="res://Entities/Enemy/angler.gd" id="2_a7vs6"]
 [ext_resource type="Texture2D" uid="uid://ckya8y4jc3dxo" path="res://Assets/enemy/Angler_Catfish.webp" id="2_uypvg"]
 [ext_resource type="Texture2D" uid="uid://cldestej0hevy" path="res://Assets/enemy/Ummmmm.webp" id="3_hhji5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uypvg"]
 radius = 85.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uypvg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_uypvg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hhji5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 0.1
-}]
+[node name="Angler" instance=ExtResource("1_pp7dy")]
+script = ExtResource("2_a7vs6")
 
-[node name="Enemy" instance=ExtResource("1_pp7dy")]
+[node name="EnemySprite" parent="." index="0"]
+texture = ExtResource("2_uypvg")
 
 [node name="HitboxComponent" parent="." index="1" node_paths=PackedStringArray("hitbox")]
 hitbox = NodePath("CollisionShape2D")
@@ -31,7 +22,5 @@ attack_damage = 3
 visible = false
 shape = SubResource("CircleShape2D_uypvg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
-sprite_frames = SubResource("SpriteFrames_uypvg")
-autoplay = "default"
-frame_progress = 0.652488
+[node name="um" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_hhji5")

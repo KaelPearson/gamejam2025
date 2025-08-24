@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=27 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
 [ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://dfnr1ybvd1iuf" path="res://Components/GameUi/game_ui.tscn" id="14_2xvty"]
+[ext_resource type="Script" uid="uid://nlajt5b4xgpb" path="res://Components/Spawner/spawner.gd" id="16_rbpkj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
 font = ExtResource("1_bx5bx")
@@ -78,6 +79,9 @@ size = Vector2(320, 350.656)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwvup"]
 size = Vector2(207, 1627)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0emak"]
+size = Vector2(20, 34.448)
 
 [node name="Main" type="Node" node_paths=PackedStringArray("menu_ui")]
 script = ExtResource("1_j6wt8")
@@ -161,5 +165,17 @@ position = Vector2(-404, -37)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
 position = Vector2(-214, 807)
 shape = SubResource("RectangleShape2D_kwvup")
+
+[node name="AngleSpawner" type="Area2D" parent="." node_paths=PackedStringArray("col_shape")]
+position = Vector2(2054, 2297)
+scale = Vector2(10, 25.415)
+script = ExtResource("16_rbpkj")
+spawn_time = 8.0
+col_shape = NodePath("CollisionShape2D")
+to_spawn = Array[PackedScene]([ExtResource("13_4pdxb")])
+metadata/_custom_type_script = "uid://nlajt5b4xgpb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AngleSpawner"]
+shape = SubResource("RectangleShape2D_0emak")
 
 [node name="GameUi" parent="." instance=ExtResource("14_2xvty")]
