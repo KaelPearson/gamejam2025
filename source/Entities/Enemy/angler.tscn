@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqotnionn4fov"]
+[gd_scene load_steps=8 format=3 uid="uid://dqotnionn4fov"]
 
 [ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_pp7dy"]
 [ext_resource type="Script" uid="uid://ej3hyvwxo5tv" path="res://Entities/Enemy/angler.gd" id="2_a7vs6"]
 [ext_resource type="Texture2D" uid="uid://ckya8y4jc3dxo" path="res://Assets/enemy/Angler_Catfish.webp" id="2_uypvg"]
 [ext_resource type="Texture2D" uid="uid://cldestej0hevy" path="res://Assets/enemy/Ummmmm.webp" id="3_hhji5"]
+[ext_resource type="AudioStream" uid="uid://betn3ekkjv8af" path="res://Assets/sfx/angler_cat.mp3" id="5_p0m06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uypvg"]
 radius = 85.0
@@ -34,3 +35,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
 position = Vector2(-766.378, 0.5)
 shape = SubResource("RectangleShape2D_a7vs6")
+
+[node name="EvilMeow" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("5_p0m06")
