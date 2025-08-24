@@ -11,9 +11,10 @@ var air := 100.0
 var score := 0.0
 @onready var lives :int = $HealthComponent.current_health
 @onready var health_component :HealthComponent = $HealthComponent
-@onready var movement_componet := $MovementComponent
+@onready var movement_component := $MovementComponent
 
 var in_air := true
+var is_dead := false
 
 @onready var board := $Board
 @onready var body := $Body
@@ -86,6 +87,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	debug.text = "Health: %d\nHeat: %.0f\nAir: %.0f\nScore: %d" % [lives, heat, air, score]
+	# don't check anything if dead
+	if is_dead:
+		return
+	
 	if in_air:
 		check_heat()
 	else:
@@ -139,7 +144,7 @@ func check_velocity() -> void:
 		board.rotation = deg_to_rad(0.0)
 
 func check_bubbles() -> void:
-	if movement_componet.space_held:
+	if movement_component.space_held:
 		$BubbleParticles.emitting = true
 		if !$BubbleParticles/BubbleSound.playing || $BubbleParticles/BubbleSound.get_playback_position() > 0.1:		
 			$BubbleParticles/BubbleSound.play()
@@ -151,13 +156,13 @@ func change_zone() -> void:
 	var effects_1_offset := 64
 	var effects_2_offset := 22
 	if in_air:
-		movement_componet.switch_zone("Air");
+		movement_component.switch_zone("Air");
 		# coming down from the air
 		board.texture = board_appearance["effects_1"]
 		board.position.x += effects_1_offset
 		water_exit_sfx.play()
 	else: 
-		movement_componet.switch_zone("Water");
+		movement_component.switch_zone("Water");
 		# coming up from the water
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset
@@ -179,6 +184,8 @@ func change_zone() -> void:
 		crouch()
 
 func transition() -> void:
+	if is_dead:
+		return
 	body.texture = body_appearance["transition"]
 	head.position = Vector2(13.0, -85.0)
 	body.rotation = deg_to_rad(30.0)
@@ -186,6 +193,8 @@ func transition() -> void:
 	board.position = Vector2(-28.0, -10.5)
 
 func stand() -> void:
+	if is_dead:
+		return
 	body.texture = body_appearance["stand"]
 	head.position = Vector2(13.0, -88.5)
 	body.position = Vector2(-21.0, -67.5)
@@ -194,6 +203,8 @@ func stand() -> void:
 
 
 func crouch() -> void:
+	if is_dead:
+		return
 	body.texture = body_appearance["crouch"]
 	head.position = Vector2(70.0, -70.5)
 	body.position = Vector2(-42.0, -39.0)
@@ -223,7 +234,7 @@ func add_heat(heat_amt : int) -> void :
 
 func add_coins(coin_amt : int) -> void :
 	coins += coin_amt;
-	score += 20; 
+	score += 20 * Globals.difficulty
 	score_update.emit(score)
 	coin_update.emit(coins);
 
@@ -235,7 +246,7 @@ func add_overtimes(delta : float) -> void :
 	else :
 		air -= delta * oxy_time;
 		air_update.emit(air)
-	score +=  delta * score_time
+	score +=  delta * score_time * Globals.difficulty
 	score_update.emit(score)
 
 
@@ -260,6 +271,15 @@ func _on_health_changed(health_amount):
 		head.texture = head_appearance["default"]
 
 func _on_death():
+	is_dead = true
+	movement_component.can_move = false
+	$HurtboxComponent.monitorable = false
+	body.global_position = global_position
+	var tween = create_tween()
+	tween.parallel().tween_property(body, "rotation", deg_to_rad(-720 * 3), 3)
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).tween_property(body, "global_position:y", global_position.y - 300, 0.5)
+	tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).tween_property(body, "global_position:y", 1800, 2.5)
 	if in_air:
 		death_sfx.play()
 		await death_sfx.finished
@@ -267,5 +287,3 @@ func _on_death():
 		death_sfx_underwater.play()
 		await death_sfx_underwater.finished
 	get_tree().reload_current_scene()
-	
-	

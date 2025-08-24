@@ -7,10 +7,12 @@ var vertical_force := -100.0
 
 var max_velocity := 1500.00
 
-var max_height := 2400.00
-var min_height := 200.00
+var max_height := 2700.00
+var min_height := 150.00
 
 var space_held := false
+# set to false if you want to disable controls
+var can_move := true
 
 func _ready() -> void:
 	player.switch.connect(transition_gravity)
@@ -21,12 +23,13 @@ func _physics_process(delta: float) -> void:
 		neg = 1;
 	else :
 		neg = -1;
-	if space_held:
+	if space_held && can_move:
 		player.velocity.y += vertical_force * .75 * neg;
 	if player.global_position.y < min_height or player.global_position.y > max_height:
-		player.velocity.y -= vertical_force * neg;
+		player.velocity.y = lerpf(player.velocity.y, 0.0, 0.9)
 	
 	player.velocity.y += gravity;
+
 	player.velocity.y = clampf(player.velocity.y, max_velocity * -1, max_velocity)
 	player.move_and_slide()
 
