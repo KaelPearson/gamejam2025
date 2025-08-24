@@ -21,7 +21,7 @@ var is_dead := false
 @onready var body := $Body
 @onready var head := %Head
 
-@onready var debug := $debug
+#@onready var debug := $debug
 
 @onready var hurt_sfx := $HurtSFX
 @onready var death_sfx := $DeathSFX
@@ -90,7 +90,7 @@ func _ready() -> void:
 		parent.in_air_area.area_exited.connect(_on_air_area_exited)
 
 func _process(delta: float) -> void:
-	debug.text = "Health: %d\nHeat: %.0f\nAir: %.0f\nScore: %d" % [lives, heat, air, score]
+	#debug.text = "Health: %d\nHeat: %.0f\nAir: %.0f\nScore: %d" % [lives, heat, air, score]
 	# don't check anything if dead
 	if is_dead:
 		return

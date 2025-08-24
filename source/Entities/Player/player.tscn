@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
-[ext_resource type="Shader" uid="uid://dtktuxip2kra" path="res://Entities/Player/player.gdshader" id="1_nhbkt"]
+[ext_resource type="Shader" path="res://Entities/Player/player.gdshader" id="1_nhbkt"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
 [ext_resource type="PackedScene" uid="uid://wexnsmoktknt" path="res://Components/MovementComponent/movement_component.tscn" id="3_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
@@ -174,12 +174,6 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(-10, -82)
 shape = SubResource("RectangleShape2D_ap3xn")
-
-[node name="debug" type="Label" parent="."]
-offset_left = -65.0
-offset_top = -315.0
-offset_right = 62.0
-offset_bottom = -276.0
 
 [node name="BubbleParticles" type="GPUParticles2D" parent="."]
 position = Vector2(-114, 7)
