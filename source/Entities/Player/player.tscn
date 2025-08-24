@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=11 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
@@ -7,9 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://dmgo7xo0xv4w1" path="res://Assets/board/Board.png" id="4_7a1se"]
 [ext_resource type="Texture2D" uid="uid://b31awv46ke48d" path="res://Assets/dog/Dog_Body_1.png" id="6_ap3xn"]
 [ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="6_x1y6q"]
+[ext_resource type="Texture2D" uid="uid://batwbg36gw3xn" path="res://Assets/particles/Simple_Bubble.png" id="9_x1y6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
 size = Vector2(79, 169)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lub02"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 528.74
+initial_velocity_max = 528.74
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.5
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mv1ah")
@@ -41,9 +52,17 @@ position = Vector2(-10, -82)
 shape = SubResource("RectangleShape2D_ap3xn")
 
 [node name="debug" type="Label" parent="."]
-offset_left = -63.0
-offset_top = -240.0
-offset_right = 64.0
-offset_bottom = -201.0
+offset_left = -65.0
+offset_top = -315.0
+offset_right = 62.0
+offset_bottom = -276.0
+
+[node name="BubbleParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-114, 7)
+emitting = false
+amount = 50
+texture = ExtResource("9_x1y6q")
+visibility_rect = Rect2(-390, -50, 400, 200)
+process_material = SubResource("ParticleProcessMaterial_lub02")
 
 [connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]

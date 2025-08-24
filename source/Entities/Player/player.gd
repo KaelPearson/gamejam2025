@@ -11,9 +11,8 @@ var air := 100.0
 var score := 0.0
 @onready var lives :int = $HealthComponent.current_health
 @onready var health_component :HealthComponent = $HealthComponent
+@onready var movement_componet := $MovementComponent
 
-
-var previous_in_air := true
 var in_air := true
 
 @onready var board := $Board
@@ -29,6 +28,7 @@ var head_appearance := {
 	'air_2': preload("res://Assets/dog/Dog_Head_Air_2.png"),
 	'hot_1': preload("res://Assets/dog/Dog_Head_Hot_1.png"),
 	'hot_2': preload("res://Assets/dog/Dog_Head_Hot_2.png"),
+	'hurt': preload("res://Assets/dog/Dog_Head_Hit.webp"),
 }
 
 var body_appearance := {
@@ -44,6 +44,8 @@ var board_appearance := {
 	'effects_1': preload("res://Assets/board/Board_Effects_1.png"),
 	'effects_2': preload("res://Assets/board/Board_Effects_2.png"),
 }
+
+var splash_scene := preload("res://Components/particles/splash_particles.tscn")
 
 ## switch to "Air"/"Water"
 signal switch(type: String)
@@ -69,10 +71,13 @@ func _process(delta: float) -> void:
 		check_air()
 	
 	check_velocity()
+	check_bubbles()
 	add_overtimes(delta);
 
 
 func check_heat() -> void:
+		if head.texture == head_appearance['hurt']:
+			return
 		if heat > 80:
 			head.texture = head_appearance['hot_2']
 		elif heat > 50:
@@ -81,6 +86,8 @@ func check_heat() -> void:
 			head.texture = head_appearance['default']
 
 func check_air() -> void:
+		if head.texture == head_appearance['hurt']:
+				return
 		if air < 20:
 			head.texture = head_appearance['air_2']
 		elif air < 50:
@@ -109,8 +116,14 @@ func check_velocity() -> void:
 			body.rotation = deg_to_rad(0.0)
 		board.rotation = deg_to_rad(0.0)
 
+func check_bubbles() -> void:
+	if movement_componet.space_held:
+		$BubbleParticles.emitting = true
+	else:
+		$BubbleParticles.emitting = false
+
 func change_zone() -> void:
-	var transition_time := 0.50
+	var transition_time := 0.25
 	var effects_1_offset := 64
 	var effects_2_offset := 22
 	if in_air:
@@ -122,7 +135,12 @@ func change_zone() -> void:
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset
 	transition()
+	var splash_instance = splash_scene.instantiate()
+	splash_instance.global_position = global_position
+	get_parent().add_child(splash_instance)
+	splash_instance.emitting = true
 	await get_tree().create_timer(transition_time).timeout
+	splash_instance.emitting = false
 	# this state should now be the opposite of what it was before
 	board.texture = board_appearance["default"]
 	if in_air:
@@ -199,6 +217,10 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 
 func _on_health_changed(health_amount):
 	lives += health_amount
+	if health_amount < 0:
+		head.texture = head_appearance["hurt"]
+		await get_tree().create_timer(0.5).timeout
+		head.texture = head_appearance["default"]
 
 func _on_death():
 	get_tree().reload_current_scene()
