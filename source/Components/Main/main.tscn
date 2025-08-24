@@ -177,7 +177,7 @@ shape = SubResource("RectangleShape2D_hv812")
 [node name="HeartSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2074, -52)
-spawn_time = 60.0
+spawn_time = 20.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("11_hv812")])
 
@@ -188,7 +188,7 @@ shape = SubResource("RectangleShape2D_080i5")
 [node name="WaterConsumeableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2133, 1737)
-spawn_time = 8.0
+spawn_time = 6.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("10_4pdxb"), ExtResource("11_rbpkj")])
 
@@ -200,7 +200,7 @@ shape = SubResource("RectangleShape2D_rbpkj")
 visible = false
 position = Vector2(2071, 76)
 scale = Vector2(1, 1.12)
-spawn_time = 10.0
+spawn_time = 6.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("9_jgaej"), ExtResource("7_prln6"), ExtResource("7_prln6"), ExtResource("9_jgaej")])
 
