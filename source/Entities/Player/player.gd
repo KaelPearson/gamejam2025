@@ -12,6 +12,7 @@ var score := 0.0
 @onready var lives :int = $HealthComponent.current_health
 @onready var health_component :HealthComponent = $HealthComponent
 @onready var movement_component := $MovementComponent
+@onready var flash_animation := $FlashAnimation;
 
 var in_air := true
 var is_dead := false
@@ -106,6 +107,7 @@ func check_heat() -> void:
 			return
 		if heat > 80:
 			head.texture = head_appearance['hot_2']
+			flash_animation.play("flash");
 		elif heat > 50:
 			head.texture = head_appearance['hot_1']
 		else:
@@ -117,6 +119,7 @@ func check_air() -> void:
 				return
 		if air < 20:
 			head.texture = head_appearance['air_2']
+			flash_animation.play("flash");
 		elif air < 50:
 			head.texture = head_appearance['air_1']
 		else:

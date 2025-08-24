@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=25 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="Shader" uid="uid://dtktuxip2kra" path="res://Entities/Player/player.gdshader" id="1_nhbkt"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
 [ext_resource type="PackedScene" uid="uid://wexnsmoktknt" path="res://Components/MovementComponent/movement_component.tscn" id="3_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
@@ -16,6 +17,16 @@
 [ext_resource type="AudioStream" uid="uid://do2bfo1a64sbt" path="res://Assets/sfx/water_enter.wav" id="13_xr8lj"]
 [ext_resource type="AudioStream" uid="uid://cgynm34fj5ck6" path="res://Assets/sfx/water_exit.wav" id="14_r8fok"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhbkt"]
+shader = ExtResource("1_nhbkt")
+shader_parameter/flash_color = Color(0.235294, 0.235294, 0.235294, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vskfa"]
+shader = ExtResource("1_nhbkt")
+shader_parameter/flash_color = Color(0.233925, 0.233925, 0.233925, 1)
+shader_parameter/flash_value = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
 size = Vector2(79, 169)
 
@@ -28,6 +39,106 @@ initial_velocity_max = 528.74
 gravity = Vector3(0, 98, 0)
 scale_min = 0.1
 scale_max = 0.5
+
+[sub_resource type="Animation" id="Animation_nhbkt"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Head:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.52, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vskfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Head:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pjcup"]
+resource_name = "o2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Head:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjcup"]
+_data = {
+&"RESET": SubResource("Animation_vskfa"),
+&"flash": SubResource("Animation_nhbkt"),
+&"o2": SubResource("Animation_pjcup")
+}
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mv1ah")
@@ -42,15 +153,18 @@ position = Vector2(-28, -10.5)
 texture = ExtResource("4_7a1se")
 
 [node name="Body" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nhbkt")
 position = Vector2(-21, -67.5)
 texture = ExtResource("6_ap3xn")
 
 [node name="Head" type="Sprite2D" parent="Body"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vskfa")
 position = Vector2(13, -88.5)
 texture = ExtResource("6_x1y6q")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("hurtbox", "health_component") instance=ExtResource("4_01a4e")]
+visible = false
 hurtbox = NodePath("CollisionShape2D")
 health_component = NodePath("../HealthComponent")
 
@@ -102,5 +216,10 @@ volume_db = 10.895
 position = Vector2(738, 0)
 limit_top = -50
 limit_bottom = 2800
+
+[node name="FlashAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pjcup")
+}
 
 [connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]

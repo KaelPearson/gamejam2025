@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o46u6s2t24um" path="res://Entities/Enemy/pelican_rider.tscn" id="7_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://beldbwnadn351" path="res://Entities/Consumable/coin.tscn" id="7_prln6"]
 [ext_resource type="PackedScene" uid="uid://dohxt3e852f7x" path="res://Entities/Consumable/oxy.tscn" id="9_jgaej"]
-[ext_resource type="PackedScene" uid="uid://b06tf2vh4ixkf" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
+[ext_resource type="PackedScene" uid="uid://cc8vtd5hivf36" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
 [ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
 [ext_resource type="PackedScene" uid="uid://bl8hdi15rys1w" path="res://Entities/Consumable/life.tscn" id="11_hv812"]
