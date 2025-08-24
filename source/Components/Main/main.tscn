@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvau8b2nxun3b"]
+[gd_scene load_steps=13 format=3 uid="uid://cvau8b2nxun3b"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
 [ext_resource type="PackedScene" uid="uid://dn2bi42x0sclh" path="res://Components/InAirArea/in_air_area.tscn" id="4_tcdda"]
+[ext_resource type="PackedScene" uid="uid://d0dw7qca8ae2m" path="res://Components/Spawner/spawner.tscn" id="5_kwvup"]
+[ext_resource type="PackedScene" uid="uid://cc8vtd5hivf36" path="res://Entities/Enemy/cat_fish.tscn" id="6_prln6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
 font = ExtResource("1_bx5bx")
@@ -56,6 +58,9 @@ _data = {
 &"press_start": SubResource("Animation_bx5bx")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqwa"]
+size = Vector2(320, 766.5)
+
 [node name="Main" type="Node" node_paths=PackedStringArray("menu_ui")]
 script = ExtResource("1_j6wt8")
 menu_ui = NodePath("MarginContainer")
@@ -94,5 +99,18 @@ libraries = {
 autoplay = "press_start"
 
 [node name="InAirArea" parent="." instance=ExtResource("4_tcdda")]
+position = Vector2(-57, -1705)
+scale = Vector2(0.326223, 2.75444)
 collision_layer = 0
 collision_mask = 1
+
+[node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+position = Vector2(2071, 14)
+spawn_time = 5.0
+col_shape = NodePath("CollisionShape2D")
+to_spawn = ExtResource("6_prln6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AirEnemySpawner"]
+position = Vector2(0, 410)
+shape = SubResource("RectangleShape2D_4pqwa")
+debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)

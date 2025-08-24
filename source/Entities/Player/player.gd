@@ -138,14 +138,16 @@ func crouch() -> void:
 
 
 func _on_air_area_entered(body):
-	switch.emit("Air")
-	in_air = true
-	change_zone()
+	if body.get_parent() is Player:
+		switch.emit("Air")
+		in_air = true
+		change_zone()
 
 func _on_air_area_exited(body):
-	switch.emit("Water")
-	in_air = false
-	change_zone()
+	if body.get_parent() is Player:
+		switch.emit("Water")
+		in_air = false
+		change_zone()
 
 func add_air(air_amt : int) -> void :
 	air = clamp(air + air_amt, 0, 100);

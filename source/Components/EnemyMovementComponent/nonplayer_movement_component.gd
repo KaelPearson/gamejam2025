@@ -8,4 +8,4 @@ class_name NonPlayerMovementComponent;
 @export var node : Node2D;
 
 func _process(delta: float) -> void:
-	node.position.x -= speed * delta;
+	node.global_position.x -= speed * delta;

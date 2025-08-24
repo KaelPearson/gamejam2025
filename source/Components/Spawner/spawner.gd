@@ -12,7 +12,7 @@ class_name Spawner;
 @onready var col_center_pos = col_shape.position;
 @onready var col_size = col_shape.shape.extents;
 
-var enabled = false;
+var enabled = true;
 func _ready() -> void:
 	var spawn_timer = Timer.new();
 	add_child(spawn_timer);
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _spawn() -> void :
 	if (!enabled) : return;
-	var rand_y = (randi() % int(col_size.y * 2));
+	var rand_y = randi_range(0, col_size.y);
 	var spawn = to_spawn.instantiate()
-	spawn.position = Vector2i(50, rand_y + (col_center_pos.y - col_size.y))
-	add_child(spawn)
+	spawn.global_position = global_position + Vector2(0, rand_y)
+	get_parent().add_child(spawn)

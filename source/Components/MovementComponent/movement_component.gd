@@ -7,6 +7,9 @@ var vertical_force := -100.0
 
 var max_velocity := 750.00
 
+var max_height := 1600.00
+var min_height := 200.00
+
 var space_held := false
 
 func _ready() -> void:
@@ -15,6 +18,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if space_held:
 		player.velocity.y += vertical_force
+	if player.global_position.y < min_height or player.global_position.y > max_height:
+		player.velocity.y -= vertical_force
+ 
 	player.velocity.y += gravity
 	player.velocity.y = clampf(player.velocity.y, max_velocity * -1, max_velocity)
 	player.move_and_slide()

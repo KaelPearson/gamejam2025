@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b06tf2vh4ixkf"]
+[gd_scene load_steps=4 format=3 uid="uid://cc8vtd5hivf36"]
 
 [ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_f00ce"]
 [ext_resource type="Texture2D" uid="uid://ctbv3dx5xm408" path="res://Assets/enemy/Cat_Fish.webp" id="2_2v1r7"]
@@ -17,8 +17,9 @@ hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 visible = false
+light_mask = 0
 position = Vector2(116, 80)
 shape = SubResource("RectangleShape2D_2v1r7")
 
-[node name="EnemyMovementComponent" parent="." index="2"]
-enemy_speed = 50.0
+[node name="EnemyMovementComponent" parent="." index="2" node_paths=PackedStringArray("node")]
+node = NodePath("..")
