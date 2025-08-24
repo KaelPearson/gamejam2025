@@ -302,6 +302,7 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 		health_component.heal(life_amt);
 
 func _on_health_changed(health_amount):
+	print(health_amount)
 	lives += health_amount
 	if lives > 0:
 		if (!flash_animation.is_playing()) :

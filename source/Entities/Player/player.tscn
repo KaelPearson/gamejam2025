@@ -167,6 +167,7 @@ texture = ExtResource("6_x1y6q")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("hurtbox", "health_component") instance=ExtResource("4_01a4e")]
 visible = false
+collision_layer = 9
 hurtbox = NodePath("CollisionShape2D")
 health_component = NodePath("../HealthComponent")
 

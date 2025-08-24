@@ -5,7 +5,7 @@ var max_gravity := 30.0
 var gravity := max_gravity
 var vertical_force := -100.0
 
-var max_velocity := 1500.00
+var max_velocity := 1000.00
 
 var max_height := 2700.00
 var min_height := 150.00

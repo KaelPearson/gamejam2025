@@ -212,7 +212,7 @@ debug_color = Color(0.309619, 0.84319, 0.446163, 0.419608)
 [node name="GroundEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2080, 890)
-spawn_time = 30.0
+spawn_time = 3.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("11_1o8fy"), ExtResource("12_2xvty")])
 

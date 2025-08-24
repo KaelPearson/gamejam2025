@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://85xrut3brm3h"]
+[gd_scene load_steps=8 format=3 uid="uid://85xrut3brm3h"]
 
 [ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_8ddbk"]
 [ext_resource type="Texture2D" uid="uid://eyy00rp6jf4c" path="res://Assets/enemy/Pirate_Ship.png" id="2_d4olg"]
+[ext_resource type="Script" uid="uid://q7u2exyong6q" path="res://Entities/Enemy/pirate_ship.gd" id="2_in0i4"]
 [ext_resource type="Texture2D" uid="uid://by8wsthka7ysq" path="res://Assets/enemy/Cat_Pirate_2.png" id="3_8ddbk"]
-[ext_resource type="Texture2D" uid="uid://dqvbgmqks0cc5" path="res://Assets/enemy/Canon_Ball.png" id="4_78y2c"]
+[ext_resource type="Texture2D" uid="uid://jblorlx58dds" path="res://Assets/enemy/Canon_Only.png" id="4_8ddbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddbk"]
 size = Vector2(164, 58)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4olg"]
+size = Vector2(492.375, 306)
+
 [node name="Enemy" instance=ExtResource("1_8ddbk")]
 scale = Vector2(1.5, 1.5)
+script = ExtResource("2_in0i4")
 
 [node name="EnemySprite" parent="." index="0"]
 scale = Vector2(0.5, 0.5)
@@ -23,7 +28,7 @@ flip_h = true
 
 [node name="Cannon" type="Sprite2D" parent="EnemySprite" index="1"]
 position = Vector2(-334, -31)
-texture = ExtResource("4_78y2c")
+texture = ExtResource("4_8ddbk")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
@@ -32,3 +37,15 @@ shape = SubResource("RectangleShape2D_8ddbk")
 
 [node name="EnemyMovementComponent" parent="." index="2"]
 speed = 50.0
+
+[node name="PlayerDetector" type="Area2D" parent="." index="3"]
+position = Vector2(-202.667, -36.6667)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
+position = Vector2(-287.146, -112.333)
+shape = SubResource("RectangleShape2D_d4olg")
+
+[node name="Marker2D" type="Marker2D" parent="." index="4"]
+position = Vector2(-202.667, -36.6667)
