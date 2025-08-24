@@ -31,6 +31,8 @@ var is_dead := false
 @onready var water_enter_sfx := $WaterEnter
 @onready var water_exit_sfx := $WaterExit
 
+@onready var overheating := $Overheating
+
 
 var head_appearance := {
 	'default': preload("res://Assets/dog/Dog_Head_Default.png"),
@@ -103,6 +105,15 @@ func _process(delta: float) -> void:
 
 
 func check_heat() -> void:
+		var volume = (heat - 50) / 50
+		if heat > 50 && !overheating.playing:
+			overheating.play()
+			overheating.volume_linear = volume
+		elif heat > 50 && overheating.playing:
+			overheating.volume_linear = volume
+		else:
+			overheating.stop()
+		
 		if head.texture == head_appearance['hurt']:
 			return
 		if heat > 80:
@@ -169,6 +180,7 @@ func change_zone() -> void:
 		# coming up from the water
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset
+		overheating.stop()
 		water_enter_sfx.play()
 	transition()
 	var splash_instance = splash_scene.instantiate()
