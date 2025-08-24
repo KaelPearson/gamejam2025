@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b6f4ua4h887yq" path="res://Entities/Consumable/ice_cream.tscn" id="8_d7od6"]
 [ext_resource type="PackedScene" uid="uid://dohxt3e852f7x" path="res://Entities/Consumable/oxy.tscn" id="9_jgaej"]
 [ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_mljux"]
-[ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
-[ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
-[ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
+[ext_resource type="PackedScene" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
+[ext_resource type="PackedScene" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
+[ext_resource type="PackedScene" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
 font = ExtResource("1_bx5bx")

@@ -3,12 +3,14 @@ class_name Player
 
 @export var heat_time : float = 1;
 @export var oxy_time : float = 1;
+@export var score_time: float = 1.0
 
 var coins : int = 0;
 var heat := 0.0
 var air := 100.0
-var score := 0
+var score := 0.0
 @onready var lives :int = $HealthComponent.current_health
+@onready var health_component :HealthComponent = $HealthComponent
 
 
 var previous_in_air := true
@@ -52,6 +54,8 @@ signal heat_update(new_heat : float);
 signal air_update(new_air : float);
 
 func _ready() -> void:
+	health_component.health_changed.connect(_on_health_changed)
+	health_component.death.connect(_on_death)
 	var parent := get_parent()
 	if parent.in_air_area:
 		parent.in_air_area.area_entered.connect(_on_air_area_entered)
@@ -173,6 +177,7 @@ func add_heat(heat_amt : int) -> void :
 
 func add_coins(coin_amt : int) -> void :
 	coins += coin_amt;
+	score += 20; 
 	coin_update.emit(coins);
 
 ## + heat when above - oxygen when below
@@ -181,6 +186,7 @@ func add_overtimes(delta : float) -> void :
 		heat += delta * heat_time;
 	else :
 		air -= delta * oxy_time;
+	score +=  delta * score_time
 
 
 func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: int) -> void:
@@ -190,3 +196,9 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 		add_air(air_amt);
 	if (coin_amt) :
 		add_coins(coin_amt);
+
+func _on_health_changed(health_amount):
+	lives += health_amount
+
+func _on_death():
+	get_tree().reload_current_scene()

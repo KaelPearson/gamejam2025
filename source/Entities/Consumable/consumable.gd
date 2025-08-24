@@ -1,4 +1,5 @@
 extends Area2D
+class_name Consumable
 
 @export var coin_amt : int = 0;
 @export var heat_amt : float = 0.0;

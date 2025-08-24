@@ -38,4 +38,7 @@ func _spawn_player() -> void:
 
 
 func _on_despawner_entered(area):
-	area.get_parent().queue_free()
+	if area is Consumable:
+		area.queue_free()
+	else:
+		area.get_parent().queue_free()
