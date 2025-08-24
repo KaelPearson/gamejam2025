@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dqvbgmqks0cc5" path="res://Assets/enemy/Canon_Ball.png" id="4_78y2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddbk"]
-size = Vector2(256.75, 152.5)
+size = Vector2(256.75, 116.167)
 
 [node name="Enemy" instance=ExtResource("1_8ddbk")]
+scale = Vector2(1.5, 1.5)
 
 [node name="EnemySprite" parent="." index="0"]
 scale = Vector2(0.5, 0.5)
@@ -26,5 +27,8 @@ texture = ExtResource("4_78y2c")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(19, 57.25)
+position = Vector2(19, 75.4167)
 shape = SubResource("RectangleShape2D_8ddbk")
+
+[node name="EnemyMovementComponent" parent="." index="2"]
+speed = 50.0

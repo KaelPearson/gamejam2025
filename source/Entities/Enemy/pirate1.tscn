@@ -9,6 +9,7 @@
 size = Vector2(256.75, 152.5)
 
 [node name="Enemy" instance=ExtResource("1_bdyk5")]
+scale = Vector2(1.5, 1.5)
 
 [node name="EnemySprite" parent="." index="0"]
 scale = Vector2(0.5, 0.5)
@@ -27,3 +28,6 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
 position = Vector2(19, 57.25)
 shape = SubResource("RectangleShape2D_bdyk5")
+
+[node name="EnemyMovementComponent" parent="." index="2"]
+speed = 50.0

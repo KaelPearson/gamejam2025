@@ -1,25 +1,21 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=24 format=3 uid="uid://d0j7y5i3lh1g4"]
 
+[ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
-[ext_resource type="FontFile" uid="uid://vuyr4njhhbp0" path="res://Assets/Fonts/SuperShiny-0v0rG.ttf" id="3_0emak"]
-[ext_resource type="FontFile" uid="uid://btfy57x4ol70s" path="res://Assets/Fonts/SuperFortrees-MAL4p.ttf" id="4_hv812"]
 [ext_resource type="PackedScene" uid="uid://dn2bi42x0sclh" path="res://Components/InAirArea/in_air_area.tscn" id="4_tcdda"]
 [ext_resource type="PackedScene" uid="uid://d0dw7qca8ae2m" path="res://Components/Spawner/spawner.tscn" id="5_kwvup"]
 [ext_resource type="PackedScene" uid="uid://ccr08hd2dp4ya" path="res://Entities/Enemy/pelican.tscn" id="6_2xvty"]
 [ext_resource type="PackedScene" uid="uid://o46u6s2t24um" path="res://Entities/Enemy/pelican_rider.tscn" id="7_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://beldbwnadn351" path="res://Entities/Consumable/coin.tscn" id="7_prln6"]
 [ext_resource type="PackedScene" uid="uid://dohxt3e852f7x" path="res://Entities/Consumable/oxy.tscn" id="9_jgaej"]
-[ext_resource type="PackedScene" uid="uid://cc8vtd5hivf36" path="res://Entities/Enemy/cat_fish.tscn" id="10_0emak"]
-[ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
-[ext_resource type="PackedScene" uid="uid://b6f4ua4h887yq" path="res://Entities/Consumable/ice_cream.tscn" id="11_rbpkj"]
 [ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
 [ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
 [ext_resource type="PackedScene" uid="uid://dfnr1ybvd1iuf" path="res://Components/GameUi/game_ui.tscn" id="14_2xvty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
-font = ExtResource("3_0emak")
+font = ExtResource("1_bx5bx")
 font_size = 240
 font_color = Color(0.928228, 0.480421, 0.337801, 1)
 shadow_size = 5
@@ -27,11 +23,9 @@ shadow_color = Color(1, 1, 1, 0.690196)
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_j6wt8"]
-font = ExtResource("4_hv812")
 font_size = 50
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 0.505882)
 
 [sub_resource type="Animation" id="Animation_pnopi"]
 length = 0.001
@@ -50,6 +44,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bx5bx"]
 resource_name = "press_start"
+length = 3.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,7 +53,7 @@ tracks/0/path = NodePath("MarginContainer/PressAny:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 1.46667, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.203922), Color(1, 1, 1, 1)]
@@ -71,16 +66,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqwa"]
-size = Vector2(320, 992.906)
+size = Vector2(320, 931.813)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pdxb"]
-size = Vector2(456, 767)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv812"]
-size = Vector2(422, 1658.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbpkj"]
-size = Vector2(394, 1475)
+size = Vector2(456, 1504)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xvty"]
 size = Vector2(320, 853)
@@ -103,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 230
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_bottom = 300
 
 [node name="MainTitle" type="Label" parent="MarginContainer"]
@@ -129,55 +118,39 @@ libraries = {
 autoplay = "press_start"
 
 [node name="InAirArea" parent="." instance=ExtResource("4_tcdda")]
-visible = false
 position = Vector2(-28, -1370)
 scale = Vector2(0.326223, 2.75444)
 collision_layer = 0
 collision_mask = 1
 
 [node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
-position = Vector2(2074, 66)
+position = Vector2(2071, 14)
 spawn_time = 5.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("6_2xvty"), ExtResource("7_4pdxb")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirEnemySpawner"]
-position = Vector2(0, 387.547)
+position = Vector2(0, 357)
 shape = SubResource("RectangleShape2D_4pqwa")
 debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
 
 [node name="AnglerSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
-visible = false
-position = Vector2(2128, 2268)
-spawn_time = 15.0
+position = Vector2(2128, 1732)
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("13_4pdxb")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnglerSpawner"]
-position = Vector2(-13, 89)
+position = Vector2(-16, 265)
 shape = SubResource("RectangleShape2D_4pdxb")
 
-[node name="CatFishSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
-visible = false
-position = Vector2(2133, 1595)
-spawn_time = 2.0
+[node name="WaterConsumableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
+position = Vector2(2128, 1732)
 col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("10_0emak")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CatFishSpawner"]
-position = Vector2(-10, 332)
-shape = SubResource("RectangleShape2D_hv812")
-
-[node name="WaterConsumeableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
-visible = false
-position = Vector2(2133, 1737)
-spawn_time = 8.0
-col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("7_prln6"), ExtResource("7_prln6"), ExtResource("10_4pdxb"), ExtResource("11_rbpkj")])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterConsumeableSpawner"]
-position = Vector2(-18, 268.5)
-shape = SubResource("RectangleShape2D_rbpkj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterConsumableSpawner"]
+position = Vector2(471, -172)
+shape = SubResource("RectangleShape2D_4pqwa")
+debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
 
 [node name="AirConsumableSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
@@ -205,7 +178,6 @@ shape = SubResource("RectangleShape2D_1o8fy")
 debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
 
 [node name="Despawner" type="Area2D" parent="."]
-visible = false
 position = Vector2(-404, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
@@ -216,5 +188,4 @@ shape = SubResource("RectangleShape2D_kwvup")
 
 [editable path="AirEnemySpawner"]
 [editable path="AnglerSpawner"]
-[editable path="CatFishSpawner"]
-[editable path="WaterConsumeableSpawner"]
+[editable path="WaterConsumableSpawner"]

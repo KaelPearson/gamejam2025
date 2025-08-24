@@ -50,7 +50,7 @@ func transition_gravity(zone: String) -> void:
 
 func switch_zone(zone: String) -> void :
 	if (zone == "Air"):
-		player.velocity.y -= 100;
+		player.velocity.y -= 25;
 	if (zone == "Water"):
-		player.velocity.y += 100;
+		player.velocity.y += 25;
 	

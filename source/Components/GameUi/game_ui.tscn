@@ -10,6 +10,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_mu0ov"]
 font = ExtResource("2_7kyel")
 font_size = 59
+font_color = Color(1, 0.574279, 0.313106, 1)
 outline_color = Color(0.957045, 0.593388, 0.452401, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.235294)
@@ -83,6 +84,21 @@ shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.454902)
 shadow_offset = Vector2(3, 3)
 
+[sub_resource type="Animation" id="Animation_7kyel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pressSpace:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_sw4d4"]
 resource_name = "space"
 loop_mode = 1
@@ -97,21 +113,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_7kyel"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("pressSpace:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7kyel"]
