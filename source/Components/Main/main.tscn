@@ -233,7 +233,7 @@ shape = SubResource("RectangleShape2D_kwvup")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_080i5")
-volume_db = -5.0
+volume_db = -10.0
 autoplay = true
 
 [editable path="AirEnemySpawner"]
