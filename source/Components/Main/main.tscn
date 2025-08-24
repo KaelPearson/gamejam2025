@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=34 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
 [ext_resource type="PackedScene" uid="uid://ckda7qy1a5d2c" path="res://Components/Background/parallax_bg.tscn" id="1_pnopi"]
 [ext_resource type="FontFile" uid="uid://vuyr4njhhbp0" path="res://Assets/Fonts/SuperShiny-0v0rG.ttf" id="3_0emak"]
 [ext_resource type="FontFile" uid="uid://btfy57x4ol70s" path="res://Assets/Fonts/SuperFortrees-MAL4p.ttf" id="4_hv812"]
 [ext_resource type="PackedScene" uid="uid://dn2bi42x0sclh" path="res://Components/InAirArea/in_air_area.tscn" id="4_tcdda"]
+[ext_resource type="Texture2D" uid="uid://dd5hirim1l5uh" path="res://Assets/ui/Dawg.png" id="5_j5efk"]
 [ext_resource type="PackedScene" uid="uid://d0dw7qca8ae2m" path="res://Components/Spawner/spawner.tscn" id="5_kwvup"]
 [ext_resource type="PackedScene" uid="uid://ccr08hd2dp4ya" path="res://Entities/Enemy/pelican.tscn" id="6_2xvty"]
 [ext_resource type="PackedScene" uid="uid://o46u6s2t24um" path="res://Entities/Enemy/pelican_rider.tscn" id="7_4pdxb"]
@@ -111,6 +112,11 @@ grow_vertical = 2
 theme_override_constants/margin_top = 230
 theme_override_constants/margin_bottom = 300
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(1535, 722)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_j5efk")
+
 [node name="MainTitle" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -126,9 +132,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Press Any Button to Start"
 label_settings = SubResource("LabelSettings_j6wt8")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
