@@ -10,5 +10,6 @@ func _on_area_entered(body) -> void:
 	if body.get_parent() is Player:
 		var cannon_ball = cannon_ball_scene.instantiate()
 		get_parent().add_child(cannon_ball)
+		$CannonFire.play()
 		cannon_ball.global_position = $Marker2D.global_position
 		$PlayerDetector.queue_free()

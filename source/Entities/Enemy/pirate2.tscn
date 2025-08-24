@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://85xrut3brm3h"]
+[gd_scene load_steps=9 format=3 uid="uid://85xrut3brm3h"]
 
 [ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_8ddbk"]
 [ext_resource type="Texture2D" uid="uid://eyy00rp6jf4c" path="res://Assets/enemy/Pirate_Ship.png" id="2_d4olg"]
 [ext_resource type="Script" uid="uid://q7u2exyong6q" path="res://Entities/Enemy/pirate_ship.gd" id="2_in0i4"]
 [ext_resource type="Texture2D" uid="uid://by8wsthka7ysq" path="res://Assets/enemy/Cat_Pirate_2.png" id="3_8ddbk"]
 [ext_resource type="Texture2D" uid="uid://jblorlx58dds" path="res://Assets/enemy/Canon_Only.png" id="4_8ddbk"]
+[ext_resource type="AudioStream" uid="uid://cy4yy6qyqc84q" path="res://Assets/sfx/cannon_shot.mp3" id="6_in0i4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddbk"]
 size = Vector2(164, 58)
@@ -49,3 +50,7 @@ shape = SubResource("RectangleShape2D_d4olg")
 
 [node name="Marker2D" type="Marker2D" parent="." index="4"]
 position = Vector2(-202.667, -36.6667)
+
+[node name="CannonFire" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("6_in0i4")
+volume_db = -5.0
