@@ -11,6 +11,7 @@
 script = ExtResource("1_egd74")
 metadata/_custom_type_script = "uid://besjootl5e0gj"
 
-[node name="EnemyMovementComponent" type="Node" parent="."]
+[node name="EnemyMovementComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("2_xugip")
+node = NodePath("..")
 metadata/_custom_type_script = "uid://dvhsvxw4b7nx1"

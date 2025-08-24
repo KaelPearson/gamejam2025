@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqotnionn4fov"]
+
+[ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_pp7dy"]
+[ext_resource type="Texture2D" uid="uid://ckya8y4jc3dxo" path="res://Assets/enemy/Angler_Catfish.webp" id="2_uypvg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uypvg"]
+radius = 85.0
+
+[node name="Enemy" instance=ExtResource("1_pp7dy")]
+
+[node name="EnemySprite" parent="." index="0"]
+texture = ExtResource("2_uypvg")
+
+[node name="HitboxComponent" parent="." index="1" node_paths=PackedStringArray("hitbox")]
+hitbox = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+visible = false
+shape = SubResource("CircleShape2D_uypvg")

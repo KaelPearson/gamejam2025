@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://85xrut3brm3h"]
+
+[ext_resource type="PackedScene" uid="uid://cjatrqs22h614" path="res://Entities/Enemy/enemy.tscn" id="1_8ddbk"]
+[ext_resource type="Texture2D" uid="uid://eyy00rp6jf4c" path="res://Assets/enemy/Pirate_Ship.png" id="2_d4olg"]
+[ext_resource type="Texture2D" uid="uid://by8wsthka7ysq" path="res://Assets/enemy/Cat_Pirate_2.png" id="3_8ddbk"]
+[ext_resource type="Texture2D" uid="uid://dqvbgmqks0cc5" path="res://Assets/enemy/Canon_Ball.png" id="4_78y2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ddbk"]
+size = Vector2(256.75, 152.5)
+
+[node name="Enemy" instance=ExtResource("1_8ddbk")]
+
+[node name="EnemySprite" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_d4olg")
+flip_h = true
+
+[node name="Pirate" type="Sprite2D" parent="EnemySprite" index="0"]
+position = Vector2(378, -76)
+texture = ExtResource("3_8ddbk")
+flip_h = true
+
+[node name="Cannon" type="Sprite2D" parent="EnemySprite" index="1"]
+position = Vector2(-334, -31)
+texture = ExtResource("4_78y2c")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(19, 57.25)
+shape = SubResource("RectangleShape2D_8ddbk")

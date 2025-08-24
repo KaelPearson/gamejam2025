@@ -19,6 +19,3 @@ hitbox = NodePath("CollisionShape2D")
 light_mask = 0
 position = Vector2(116, 80)
 shape = SubResource("RectangleShape2D_2v1r7")
-
-[node name="EnemyMovementComponent" parent="." index="2" node_paths=PackedStringArray("node")]
-node = NodePath("..")

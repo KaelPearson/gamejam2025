@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d0j7y5i3lh1g4"]
+[gd_scene load_steps=21 format=3 uid="uid://d0j7y5i3lh1g4"]
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_bx5bx"]
 [ext_resource type="Script" uid="uid://dkmilxsdfpl11" path="res://Components/Main/main.gd" id="1_j6wt8"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b6f4ua4h887yq" path="res://Entities/Consumable/ice_cream.tscn" id="8_d7od6"]
 [ext_resource type="PackedScene" uid="uid://dohxt3e852f7x" path="res://Entities/Consumable/oxy.tscn" id="9_jgaej"]
 [ext_resource type="PackedScene" uid="uid://c1h6qfy1kmla0" path="res://Entities/Consumable/sweet_treat.tscn" id="10_mljux"]
+[ext_resource type="PackedScene" uid="uid://cdvr3q55vutep" path="res://Entities/Enemy/pirate1.tscn" id="11_1o8fy"]
+[ext_resource type="PackedScene" uid="uid://85xrut3brm3h" path="res://Entities/Enemy/pirate2.tscn" id="12_2xvty"]
+[ext_resource type="PackedScene" uid="uid://dqotnionn4fov" path="res://Entities/Enemy/angler.tscn" id="13_4pdxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnopi"]
 font = ExtResource("1_bx5bx")
@@ -113,9 +116,8 @@ collision_mask = 1
 
 [node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 position = Vector2(2071, 14)
-spawn_time = 5.0
 col_shape = NodePath("CollisionShape2D")
-to_spawn = Array[PackedScene]([ExtResource("6_prln6"), ExtResource("7_prln6"), ExtResource("8_d7od6"), ExtResource("9_jgaej"), ExtResource("10_mljux")])
+to_spawn = Array[PackedScene]([ExtResource("6_prln6"), ExtResource("7_prln6"), ExtResource("8_d7od6"), ExtResource("9_jgaej"), ExtResource("10_mljux"), ExtResource("11_1o8fy"), ExtResource("12_2xvty"), ExtResource("13_4pdxb")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirEnemySpawner"]
 position = Vector2(0, 559.375)
@@ -126,5 +128,5 @@ debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)
 position = Vector2(-404, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Despawner"]
-position = Vector2(93.5, 803.5)
+position = Vector2(-214, 807)
 shape = SubResource("RectangleShape2D_kwvup")
