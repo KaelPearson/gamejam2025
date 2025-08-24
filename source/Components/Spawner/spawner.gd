@@ -11,10 +11,10 @@ class_name Spawner;
 
 @onready var col_center_pos = col_shape.position;
 @onready var col_size = col_shape.shape.extents;
+@onready var spawn_timer = Timer.new();
 
 var enabled = false;
 func _ready() -> void:
-	var spawn_timer = Timer.new();
 	add_child(spawn_timer);
 	spawn_timer.wait_time = spawn_time;
 	spawn_timer.one_shot = false;
@@ -28,3 +28,6 @@ func _spawn() -> void :
 	var spawn = to_spawn[arr_num].instantiate()
 	spawn.global_position = global_position + Vector2(0, rand_y)
 	get_parent().add_child(spawn)
+
+func _process(delta: float) -> void:
+	spawn_timer.wait_time = spawn_time / Globals.difficulty

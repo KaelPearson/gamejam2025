@@ -12,4 +12,4 @@ func _ready() -> void:
 	speed += GameSettings.curr_speed
 
 func _process(delta: float) -> void:
-	node.global_position.x -= speed * delta;
+	node.global_position.x -= speed * Globals.difficulty * delta;
