@@ -10,7 +10,8 @@ extends Control
 	$CanvasLayer/MarginContainer/GridContainer2/life3,
 ]
 
-var head_hurt = preload("res://Assets/dog/Dog_Head_Hit.webp")
+const head_hurt = preload("res://Assets/ui/dead.png")
+
 var score_value: float = 0.0
 var score_running: bool = false
 var max_health: int = 3

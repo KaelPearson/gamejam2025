@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://dirqigo7sgxv0" path="res://Assets/Fonts/Super Kindly.ttf" id="1_3yebc"]
 [ext_resource type="Script" uid="uid://bgl88wuay2ewk" path="res://Components/GameUi/game_ui.gd" id="1_sw4d4"]
-[ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="1_v5k42"]
 [ext_resource type="Texture2D" uid="uid://jjdmila2jw1s" path="res://Assets/ui/Thermometers.webp" id="3_ar4dj"]
+[ext_resource type="Texture2D" uid="uid://cm1n8h5cq0j4e" path="res://Assets/ui/alive.png" id="3_sw4d4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mu0ov"]
 font = ExtResource("1_3yebc")
@@ -96,20 +96,23 @@ columns = 4
 [node name="Life" type="Label" parent="CanvasLayer/MarginContainer/GridContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Life"
+text = "Life "
 label_settings = SubResource("LabelSettings_mu0ov")
 
 [node name="life1" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
 layout_mode = 2
-texture = ExtResource("1_v5k42")
+texture = ExtResource("3_sw4d4")
+expand_mode = 3
 
 [node name="life2" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
 layout_mode = 2
-texture = ExtResource("1_v5k42")
+texture = ExtResource("3_sw4d4")
+expand_mode = 3
 
 [node name="life3" type="TextureRect" parent="CanvasLayer/MarginContainer/GridContainer2"]
 layout_mode = 2
-texture = ExtResource("1_v5k42")
+texture = ExtResource("3_sw4d4")
+expand_mode = 3
 
 [node name="Heat" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 1748.0
