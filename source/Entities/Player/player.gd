@@ -181,3 +181,12 @@ func add_overtimes(delta : float) -> void :
 		heat += delta * heat_time;
 	else :
 		air -= delta * oxy_time;
+
+
+func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: int) -> void:
+	if (heat_amt):
+		add_heat(heat_amt);
+	if (air_amt) :
+		add_air(air_amt);
+	if (coin_amt) :
+		add_coins(coin_amt);

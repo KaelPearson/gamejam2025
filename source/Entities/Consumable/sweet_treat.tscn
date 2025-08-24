@@ -16,9 +16,5 @@ heat_amt = -20.0
 [node name="Sprite" parent="." index="0"]
 texture = SubResource("AtlasTexture_r0rh8")
 
-[node name="NonPlayerMovementComponent" parent="." index="1" node_paths=PackedStringArray("node")]
-speed = 10.0
-node = NodePath("..")
-
 [node name="Collision" type="CollisionShape2D" parent="." index="2"]
 shape = SubResource("RectangleShape2D_31b4k")

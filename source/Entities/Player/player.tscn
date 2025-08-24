@@ -45,3 +45,5 @@ offset_left = -63.0
 offset_top = -240.0
 offset_right = 64.0
 offset_bottom = -201.0
+
+[connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]
