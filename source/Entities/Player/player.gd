@@ -26,6 +26,9 @@ var in_air := true
 @onready var hurt_sfx_underwater := $HurtSFXUnderwater
 @onready var death_sfx_underwater := $DeathSFXUnderwater
 
+@onready var water_enter_sfx := $WaterEnter
+@onready var water_exit_sfx := $WaterExit
+
 
 var head_appearance := {
 	'default': preload("res://Assets/dog/Dog_Head_Default.png"),
@@ -149,10 +152,12 @@ func change_zone() -> void:
 		# coming down from the air
 		board.texture = board_appearance["effects_1"]
 		board.position.x += effects_1_offset
+		water_exit_sfx.play()
 	else: 
 		# coming up from the water
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset
+		water_enter_sfx.play()
 	transition()
 	var splash_instance = splash_scene.instantiate()
 	splash_instance.global_position = global_position

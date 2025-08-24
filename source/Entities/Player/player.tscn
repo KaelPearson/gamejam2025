@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=17 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://dojmry0j62gbp" path="res://Assets/sfx/death_howl.wav" id="10_iplt1"]
 [ext_resource type="AudioStream" uid="uid://c5k7a1iqhc5e0" path="res://Assets/sfx/dog_hurt_undewater.wav" id="11_iplt1"]
 [ext_resource type="AudioStream" uid="uid://v6ds5qxiiugi" path="res://Assets/sfx/death_howl_underwater.wav" id="12_owvpp"]
+[ext_resource type="AudioStream" uid="uid://do2bfo1a64sbt" path="res://Assets/sfx/water_enter.wav" id="13_xr8lj"]
+[ext_resource type="AudioStream" uid="uid://cgynm34fj5ck6" path="res://Assets/sfx/water_exit.wav" id="14_r8fok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
 size = Vector2(79, 169)
@@ -80,5 +82,12 @@ stream = ExtResource("11_iplt1")
 
 [node name="DeathSFXUnderwater" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_owvpp")
+
+[node name="WaterEnter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_xr8lj")
+
+[node name="WaterExit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_r8fok")
+volume_db = 10.895
 
 [connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]
