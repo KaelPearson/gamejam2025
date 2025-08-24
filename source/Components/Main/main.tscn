@@ -137,7 +137,7 @@ autoplay = "press_start"
 visible = false
 position = Vector2(-28, -1370)
 scale = Vector2(0.326223, 2.75444)
-collision_layer = 0
+collision_layer = 1
 collision_mask = 1
 
 [node name="AirEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
@@ -166,7 +166,7 @@ shape = SubResource("RectangleShape2D_4pdxb")
 [node name="CatFishSpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2133, 1595)
-spawn_time = 2.0
+spawn_time = 5.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("10_0emak")])
 
@@ -212,7 +212,7 @@ debug_color = Color(0.309619, 0.84319, 0.446163, 0.419608)
 [node name="GroundEnemySpawner" parent="." node_paths=PackedStringArray("col_shape") instance=ExtResource("5_kwvup")]
 visible = false
 position = Vector2(2080, 890)
-spawn_time = 3.0
+spawn_time = 25.0
 col_shape = NodePath("CollisionShape2D")
 to_spawn = Array[PackedScene]([ExtResource("11_1o8fy"), ExtResource("12_2xvty")])
 
