@@ -59,7 +59,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqwa"]
-size = Vector2(320, 766.5)
+size = Vector2(320, 1065.25)
 
 [node name="Main" type="Node" node_paths=PackedStringArray("menu_ui")]
 script = ExtResource("1_j6wt8")
@@ -111,6 +111,6 @@ col_shape = NodePath("CollisionShape2D")
 to_spawn = ExtResource("6_prln6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AirEnemySpawner"]
-position = Vector2(0, 410)
+position = Vector2(0, 559.375)
 shape = SubResource("RectangleShape2D_4pqwa")
 debug_color = Color(0.852195, 0.694719, 0.418398, 0.419608)

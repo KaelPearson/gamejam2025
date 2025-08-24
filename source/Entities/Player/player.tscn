@@ -1,19 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=9 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
 [ext_resource type="PackedScene" uid="uid://wexnsmoktknt" path="res://Components/MovementComponent/movement_component.tscn" id="3_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
 [ext_resource type="Texture2D" uid="uid://dmgo7xo0xv4w1" path="res://Assets/board/Board.png" id="4_7a1se"]
-[ext_resource type="PackedScene" uid="uid://cwp2uk6uql5kt" path="res://Components/HitboxComponent/hitbox_component.tscn" id="5_7a1se"]
 [ext_resource type="Texture2D" uid="uid://b31awv46ke48d" path="res://Assets/dog/Dog_Body_1.png" id="6_ap3xn"]
 [ext_resource type="Texture2D" uid="uid://bkgpruql1qpya" path="res://Assets/dog/Dog_Head_Default.png" id="6_x1y6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap3xn"]
 size = Vector2(79, 169)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iplt1"]
-size = Vector2(130, 208.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_mv1ah")
@@ -37,23 +33,12 @@ position = Vector2(13, -88.5)
 texture = ExtResource("6_x1y6q")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("hurtbox", "health_component") instance=ExtResource("4_01a4e")]
-visible = false
 hurtbox = NodePath("CollisionShape2D")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(-3.5, 59.5)
+position = Vector2(-10, -82)
 shape = SubResource("RectangleShape2D_ap3xn")
-
-[node name="hitbox_component" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("5_7a1se")]
-visible = false
-collision_mask = 5
-hitbox = NodePath("CollisionShape2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_component"]
-position = Vector2(-19, 61.75)
-shape = SubResource("RectangleShape2D_iplt1")
-debug_color = Color(0.658789, 0.51407, 0.0890975, 0.42)
 
 [node name="debug" type="Label" parent="."]
 offset_left = -63.0
