@@ -6,6 +6,7 @@ extends Control
 @onready var finalscore: Label = $GameOver/MarginContainer2/GridContainer/finalscore
 @onready var game_over: CanvasLayer = $GameOver
 @onready var quotes: Label = $GameOver/MarginContainer/quotes
+@onready var tutorial: CanvasLayer = $Tutorial
 
 @onready var life_pool: Array[TextureRect] = [
 	$CanvasLayer/MarginContainer/GridContainer2/life1,
@@ -39,6 +40,8 @@ var score_running: bool = false
 var max_health: int = 3
 var current_health: int = max_health
 
+@onready var movement_component := $MovementComponent
+
 func _ready() -> void:
 	Globals.player_set.connect(_on_player_set)
 	# Hide all children at the start
@@ -56,12 +59,13 @@ func start_score() -> void:
 	for child in get_children():
 		child.visible = true
 	game_over.visible = false
+	tutorial.visible = false
 	
 	score_running = true
 
 func stop_score() -> void:
 	score_running = false
-
+	
 ## Connect to player signals here
 ## Player signals cannot be set in the ready function as a player may not be set when the UI is first ready.
 func _on_player_set():
