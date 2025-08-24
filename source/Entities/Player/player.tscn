@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://b5tbqxijwy45r"]
+[gd_scene load_steps=27 format=3 uid="uid://b5tbqxijwy45r"]
 
 [ext_resource type="Script" uid="uid://bxtceg74h8bqj" path="res://Entities/Player/player.gd" id="1_mv1ah"]
-[ext_resource type="Shader" uid="uid://dtktuxip2kra" path="res://Entities/Player/player.gdshader" id="1_nhbkt"]
+[ext_resource type="Shader" path="res://Entities/Player/player.gdshader" id="1_nhbkt"]
 [ext_resource type="PackedScene" uid="uid://dqn4ox11tks5c" path="res://Components/HealthComponent/health_component.tscn" id="2_5c2io"]
 [ext_resource type="PackedScene" uid="uid://wexnsmoktknt" path="res://Components/MovementComponent/movement_component.tscn" id="3_4wf4l"]
 [ext_resource type="PackedScene" uid="uid://bt03y072s427g" path="res://Components/HurtboxComponent/hurtbox_component.tscn" id="4_01a4e"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://do2bfo1a64sbt" path="res://Assets/sfx/water_enter.wav" id="13_xr8lj"]
 [ext_resource type="AudioStream" uid="uid://cgynm34fj5ck6" path="res://Assets/sfx/water_exit.wav" id="14_r8fok"]
 [ext_resource type="AudioStream" uid="uid://dycl34x58ph3x" path="res://Assets/sfx/sizzling.ogg" id="16_nhbkt"]
+[ext_resource type="AudioStream" uid="uid://cxssmhbwftho" path="res://Assets/sfx/heartbeat_louder.ogg" id="18_pjcup"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nhbkt"]
 shader = ExtResource("1_nhbkt")
@@ -225,5 +226,8 @@ libraries = {
 
 [node name="Overheating" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_nhbkt")
+
+[node name="Drowning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_pjcup")
 
 [connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]

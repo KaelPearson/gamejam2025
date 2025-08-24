@@ -32,6 +32,7 @@ var is_dead := false
 @onready var water_exit_sfx := $WaterExit
 
 @onready var overheating := $Overheating
+@onready var drowning := $Drowning
 
 
 var head_appearance := {
@@ -129,6 +130,14 @@ func check_heat() -> void:
 		
 
 func check_air() -> void:
+		var volume = (50 - air) / 50
+		if air < 50 && !drowning.playing:
+			drowning.play()
+			drowning.volume_linear = volume
+		elif air < 50 && drowning.playing:
+			drowning.volume_linear = volume
+		else:
+			drowning.stop()
 		if head.texture == head_appearance['hurt']:
 				return
 		if air < 20:
@@ -180,6 +189,7 @@ func change_zone() -> void:
 		# coming down from the air
 		board.texture = board_appearance["effects_1"]
 		board.position.x += effects_1_offset
+		drowning.stop()
 		water_exit_sfx.play()
 	else: 
 		movement_component.switch_zone("Water");
