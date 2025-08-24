@@ -11,7 +11,7 @@ region = Rect2(18, 42, 63, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31b4k"]
 size = Vector2(64, 64)
 
-[node name="Consumable" instance=ExtResource("1_1vspi")]
+[node name="Consumable2" instance=ExtResource("1_1vspi")]
 heat_amt = -20.0
 
 [node name="Sprite" parent="." index="0"]
