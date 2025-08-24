@@ -283,6 +283,8 @@ func _on_health_changed(health_amount):
 		head.texture = head_appearance["default"]
 
 func _on_death():
+	if is_dead:
+		return
 	is_dead = true
 	movement_component.can_move = false
 	$HurtboxComponent.monitorable = false
@@ -298,4 +300,3 @@ func _on_death():
 	else:
 		death_sfx_underwater.play()
 		await death_sfx_underwater.finished
-	get_tree().reload_current_scene()

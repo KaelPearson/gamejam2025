@@ -30,6 +30,7 @@ window/main_scene="uid://ckda7qy1a5d2c"
 [layer_names]
 
 2d_physics/layer_3="in_air"
+2d_physics/layer_4="Enemy_Attack_Detection_Layer"
 
 [rendering]
 
