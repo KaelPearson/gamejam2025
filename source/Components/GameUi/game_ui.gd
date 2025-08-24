@@ -37,9 +37,6 @@ var score_running: bool = false
 var max_health: int = 3
 var current_health: int = max_health
 
-@export var heat_increase_rate: float = 1.0 
-@export var air_decrease_rate: float = 1.0
-
 func _ready() -> void:
 	Globals.player_set.connect(_on_player_set)
 	# Hide all children at the start
@@ -89,7 +86,7 @@ func _on_health_changed(amount):
 	for health in range(max_health):
 		if health >= current_health:
 			life_pool[health].texture = head_hurt
-			
+			 
 	if current_health <= 0:
 		stop_score()
 		game_over.visible = true
