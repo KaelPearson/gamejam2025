@@ -26,6 +26,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gxxy"]
 radius = 94.0213
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5xtf"]
+size = Vector2(526.5, 432)
+
 [node name="Enemy" instance=ExtResource("1_4gxxy")]
 script = ExtResource("2_3m7ae")
 
@@ -43,6 +46,7 @@ hitbox = NodePath("CollisionShape2D")
 position = Vector2(28, 8)
 scale = Vector2(0.719998, 0.320001)
 shape = SubResource("CircleShape2D_4gxxy")
+
 [node name="PlayerDetector" type="Area2D" parent="." index="4"]
 collision_layer = 0
 
