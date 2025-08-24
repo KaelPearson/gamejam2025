@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _spawn() -> void :
 	if (!enabled) : return;
+	spawn_time = randf_range(spawn_time * .8, spawn_time * 1.2)
 	var rand_y = randi_range(0, col_size.y);
 	var arr_num = randi_range(0, to_spawn.size()-1);
 	var spawn = to_spawn[arr_num].instantiate()

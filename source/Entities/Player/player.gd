@@ -241,10 +241,20 @@ func add_coins(coin_amt : int) -> void :
 ## + heat when above - oxygen when below
 func add_overtimes(delta : float) -> void :
 	if (in_air) :
+		heat_time = clampf(heat_time + (1 * delta), 1.0, 5)
+		oxy_time = 1
 		heat += delta * heat_time;
+		if heat > 100.0:
+			health_component.damage(1)
+			heat = 0.0
 		heat_update.emit(heat)
 	else :
+		heat_time = 1
+		oxy_time = clampf(oxy_time + (2 * delta), 1.0, 3)
 		air -= delta * oxy_time;
+		if air < 0.0:
+			health_component.damage(1)
+			air = 100.0
 		air_update.emit(air)
 	score +=  delta * score_time * Globals.difficulty
 	score_update.emit(score)
