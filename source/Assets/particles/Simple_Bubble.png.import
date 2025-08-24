@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://bjk1spmjmj834"
+=======
+uid="uid://kulip8pj21yi"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Simple_Bubble.png-a1764fbca6b8f78880c97f12f35d7453.ctex"
 metadata={
 "vram_texture": false

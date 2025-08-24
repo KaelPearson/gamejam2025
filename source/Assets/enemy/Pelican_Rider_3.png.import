@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://ieau6bvnx7a6"
+=======
+uid="uid://busvvobhv0jsx"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Pelican_Rider_3.png-88a5a446fa9f8d83bc43399cbab1eecf.ctex"
 metadata={
 "vram_texture": false
