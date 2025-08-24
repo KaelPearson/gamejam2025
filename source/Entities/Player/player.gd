@@ -302,21 +302,22 @@ func _on_hurtbox_component_collect(heat_amt: float, air_amt: float, coin_amt: in
 		health_component.heal(life_amt);
 
 func _on_health_changed(health_amount):
-	print(health_amount)
-	lives += health_amount
-	if lives > 0:
+	# health_amount is now the new total amount of health
+	var diff = health_amount - lives
+	lives = health_amount
+	if !is_dead:
 		if (!flash_animation.is_playing()) :
 			body.material.set("shader_parameter/flash_color", Vector3(1, 0, 0));
 			head.material.set("shader_parameter/flash_color", Vector3(1, 0, 0));
 			flash_animation.play("flash");
-		if in_air:
-			hurt_sfx.play()
-		else:
-			hurt_sfx_underwater.play()
-	if health_amount < 0:
-		head.texture = head_appearance["hurt"]
-		await get_tree().create_timer(0.5).timeout
-		head.texture = head_appearance["default"]
+		if diff < 0:
+			if in_air:
+				hurt_sfx.play()
+			else:
+				hurt_sfx_underwater.play()
+			head.texture = head_appearance["hurt"]
+			await get_tree().create_timer(0.5).timeout
+			head.texture = head_appearance["default"]
 
 func _on_death():
 	if is_dead:
