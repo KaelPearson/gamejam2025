@@ -48,6 +48,10 @@ func _ready() -> void:
 	air.value = 100.0
 	show_random_quote()
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if (game_over.visible):
+		get_tree().reload_current_scene()
+
 func start_score() -> void:
 	for child in get_children():
 		child.visible = true
