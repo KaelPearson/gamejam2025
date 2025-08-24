@@ -96,4 +96,9 @@ stream = ExtResource("13_xr8lj")
 stream = ExtResource("14_r8fok")
 volume_db = 10.895
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(738, 0)
+limit_top = -50
+limit_bottom = 2800
+
 [connection signal="collect" from="HurtboxComponent" to="." method="_on_hurtbox_component_collect"]

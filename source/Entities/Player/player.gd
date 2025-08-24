@@ -151,11 +151,13 @@ func change_zone() -> void:
 	var effects_1_offset := 64
 	var effects_2_offset := 22
 	if in_air:
+		movement_componet.switch_zone("Air");
 		# coming down from the air
 		board.texture = board_appearance["effects_1"]
 		board.position.x += effects_1_offset
 		water_exit_sfx.play()
 	else: 
+		movement_componet.switch_zone("Water");
 		# coming up from the water
 		board.texture = board_appearance["effects_2"]
 		board.position.x += effects_2_offset

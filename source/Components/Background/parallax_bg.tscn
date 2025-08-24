@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckda7qy1a5d2c"]
+[gd_scene load_steps=9 format=3 uid="uid://ckda7qy1a5d2c"]
 
 [ext_resource type="Texture2D" uid="uid://bslwalw0e6n7j" path="res://Assets/beachlayer.png" id="1_g5cwi"]
 [ext_resource type="Texture2D" uid="uid://l24g57cchtj8" path="res://Assets/Untitled_Artwork.png" id="1_wlde3"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bitsbv0ynhl0e" path="res://Assets/topwavelayer.png" id="4_fnh6b"]
 [ext_resource type="Texture2D" uid="uid://b048gc52mww6r" path="res://Assets/botwavelayer.png" id="5_aurpg"]
 [ext_resource type="Texture2D" uid="uid://bgu7v4wmv55pe" path="res://Assets/midwavelayer.png" id="5_n63qm"]
+[ext_resource type="Texture2D" uid="uid://boqhr8a2jn75q" path="res://Assets/bg/Ocean_Background.webp" id="7_vcx2q"]
+[ext_resource type="Texture2D" uid="uid://cqq0ljc3jxchh" path="res://Assets/bg/Ocean_Sand.webp" id="8_rxg1n"]
 
 [node name="ParallaxBg" type="Node2D"]
 
@@ -58,7 +60,17 @@ scale = Vector2(0.79, 0.79)
 texture = ExtResource("5_aurpg")
 centered = false
 
+[node name="Ocean_Background" type="Parallax2D" parent="."]
+scale = Vector2(2.2, 2.2)
+repeat_size = Vector2(982, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ocean_Background"]
+position = Vector2(483.182, 938.182)
+texture = ExtResource("7_vcx2q")
+
 [node name="SeaBottom" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-1973, 180)
 repeat_size = Vector2(2147, 0)
 autoscroll = Vector2(-140, 0)
 
@@ -67,3 +79,27 @@ position = Vector2(-35, -511)
 scale = Vector2(0.79, 0.79)
 texture = ExtResource("5_n63qm")
 centered = false
+
+[node name="SeaBottom2" type="Parallax2D" parent="."]
+rotation = 3.14159
+scroll_offset = Vector2(1997, 0)
+repeat_size = Vector2(2147, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SeaBottom2"]
+position = Vector2(-2307, -2868)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_n63qm")
+centered = false
+
+[node name="Sand2" type="Parallax2D" parent="."]
+scale = Vector2(1.50725, 1.59511)
+scroll_offset = Vector2(-5, 0)
+repeat_size = Vector2(982, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sand2"]
+position = Vector2(1464.92, 1476.39)
+texture = ExtResource("8_rxg1n")
